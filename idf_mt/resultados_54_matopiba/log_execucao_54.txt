@@ -1,0 +1,238 @@
+Amostra: n = 54 ({'Centro-Oeste': 33, 'MATOPIBA': 21})
+
+Quadro 4 - Descritivas
+                                   indicador    mean     std    min     max   cv_%
+I01                         BL fixa/100 dom   57.33   26.93  12.14  148.29  46.97
+I02                        4G (% moradores)   89.81    9.42  55.79   99.97  10.49
+I03                        5G (% moradores)   63.70   38.54   0.00   99.87  60.50
+I04                     Backhaul (presença)    1.00    0.00   1.00    1.00   0.00
+I05                      PA fin./10 mil hab    1.40    0.47   0.63    2.45  33.62
+I06                        Coop./10 mil hab    0.45    0.35   0.00    1.63  78.50
+I07           Pix receb. PJ/mês por empresa   46.73   13.12  30.11   93.56  28.08
+I08            Empresas recebedoras Pix (%)   39.71    3.61  32.11   48.02   9.09
+I09                Crédito/empresa (R$ mil)  205.53  102.13  36.25  496.96  49.69
+I10                Empresas ativas/1000 hab  101.47   37.60  30.23  158.12  37.06
+I11                    Simples Nacional (%)   68.49    4.21  58.02   76.40   6.15
+I12                        Tx. abertura (%)   21.96    2.49  17.72   28.50  11.34
+I13                    Tx. encerramento (%)    7.84    0.87   6.03    9.71  11.06
+I14                      Idade média (anos)    7.24    1.13   4.95    9.40  15.57
+I15                  Adultos 25+ médio+ (%)   47.17    8.00  27.59   59.09  16.97
+I16  Pessoas 18+ estudando/1000 hab (proxy)   70.36   17.97  40.24  137.52  25.54
+
+Indicadores sem variância (excluídos da normalização): ['I04']
+Subíndices abaixo do piso 0.01 (ajustados só na média geométrica): 1
+
+Pesos ACP: {'D1': np.float64(0.217), 'D2': np.float64(0.282), 'D3': np.float64(0.077), 'D4': np.float64(0.168), 'D5': np.float64(0.256)} | var. explicada PC1 = 0.478
+
+Quadro 5 - Spearman
+                Delphi (ref.)  Pesos iguais    ACP  Aritmética
+Delphi (ref.)          1.000         0.997  0.978       0.986
+Pesos iguais           0.997         1.000  0.988       0.982
+ACP                    0.978         0.988  1.000       0.961
+Aritmética             0.986         0.982  0.961       1.000 
+ p-valor máx: 1.042156531456951e-30
+
+IDF médio = 42.74 (DP = 14.80); mín = 11.66 (Barreirinhas); máx = 70.52 (Lucas do Rio Verde)
+faixa
+Baixa          14
+Média-baixa    13
+Média-alta     13
+Alta           14
+
+Médias dos subíndices:
+ D1    0.585
+D2    0.367
+D3    0.385
+D4    0.510
+D5    0.480
+
+Ranking
+                  municipio  uf    IDF        faixa  S_D1  S_D2  S_D3  S_D4  S_D5
+1       Lucas do Rio Verde  MT  70.52         Alta  0.75  0.81  0.67  0.59  0.68
+2            Alta Floresta  MT  64.63         Alta  0.67  0.85  0.52  0.55  0.72
+3               Nova Mutum  MT  63.29         Alta  0.69  1.00  0.50  0.54  0.52
+4         Tangará da Serra  MT  62.51         Alta  0.78  0.62  0.61  0.51  0.55
+5                  Sorriso  MT  60.32         Alta  0.79  0.70  0.52  0.59  0.41
+6                Rio Verde  GO  58.15         Alta  0.79  0.50  0.50  0.62  0.53
+7             Rondonópolis  MT  57.62         Alta  0.81  0.53  0.43  0.58  0.59
+8                 Dourados  MS  57.58         Alta  0.86  0.53  0.42  0.45  0.72
+9       Primavera do Leste  MT  57.10         Alta  0.85  0.61  0.42  0.61  0.42
+10                   Sinop  MT  56.93         Alta  0.83  0.46  0.48  0.54  0.55
+11             Três Lagoas  MS  56.74         Alta  0.79  0.47  0.52  0.46  0.58
+12                 Catalão  GO  56.51         Alta  0.86  0.59  0.34  0.50  0.69
+13  Luís Eduardo Magalhães  BA  55.09         Alta  0.78  0.56  0.40  0.60  0.47
+14               Itumbiara  GO  53.64         Alta  0.84  0.45  0.42  0.50  0.52
+15         Barra do Garças  MT  53.02   Média-alta  0.51  0.51  0.45  0.53  0.78
+16               Barreiras  BA  52.57   Média-alta  0.65  0.35  0.52  0.56  0.62
+17                  Gurupi  TO  52.26   Média-alta  0.80  0.41  0.32  0.56  0.75
+18                Mineiros  GO  52.15   Média-alta  0.66  0.43  0.39  0.59  0.66
+19    Paraíso do Tocantins  TO  51.84   Média-alta  0.68  0.35  0.46  0.57  0.62
+20               Araguaína  TO  51.43   Média-alta  0.79  0.29  0.45  0.53  0.66
+21                  Balsas  MA  51.08   Média-alta  0.65  0.25  0.79  0.49  0.43
+22   Campo Novo do Parecis  MT  50.27   Média-alta  0.40  0.86  0.39  0.60  0.47
+23        Pontes e Lacerda  MT  48.55   Média-alta  0.56  0.65  0.37  0.61  0.32
+24              Ponta Porã  MS  48.03   Média-alta  0.55  0.53  0.28  0.53  0.71
+25                Anápolis  GO  47.69   Média-alta  0.76  0.42  0.27  0.50  0.65
+26          Porto Nacional  TO  46.52   Média-alta  0.57  0.34  0.40  0.47  0.66
+27                 Naviraí  MS  45.41   Média-alta  0.44  0.55  0.36  0.58  0.44
+28          Nova Andradina  MS  44.78  Média-baixa  0.35  0.72  0.37  0.56  0.40
+29               Morrinhos  GO  44.61  Média-baixa  0.54  0.32  0.34  0.49  0.75
+30           Várzea Grande  MT  44.39  Média-baixa  0.80  0.27  0.32  0.43  0.57
+31                   Jataí  GO  44.27  Média-baixa  0.77  0.30  0.31  0.48  0.51
+32              Imperatriz  MA  43.36  Média-baixa  0.82  0.14  0.42  0.47  0.65
+33               Goianésia  GO  42.72  Média-baixa  0.32  0.42  0.46  0.60  0.44
+34            Caldas Novas  GO  41.88  Média-baixa  0.75  0.21  0.33  0.46  0.53
+35                 Inhumas  GO  40.99  Média-baixa  0.72  0.37  0.21  0.63  0.38
+36                 Cáceres  MT  37.45  Média-baixa  0.32  0.33  0.33  0.42  0.65
+37              Açailândia  MA  35.91  Média-baixa  0.77  0.07  0.54  0.39  0.40
+38                 Corumbá  MS  33.78  Média-baixa  0.45  0.26  0.22  0.39  0.51
+39          Senador Canedo  GO  31.03  Média-baixa  0.82  0.13  0.15  0.45  0.44
+40    Aparecida de Goiânia  GO  30.89  Média-baixa  0.86  0.07  0.18  0.54  0.52
+41                 Bacabal  MA  30.59        Baixa  0.48  0.09  0.43  0.36  0.38
+42                  Caxias  MA  26.82        Baixa  0.48  0.05  0.34  0.48  0.38
+43                   Timon  MA  25.98        Baixa  0.64  0.06  0.20  0.40  0.39
+44                Trindade  GO  25.96        Baixa  0.69  0.15  0.08  0.50  0.38
+45              Chapadinha  MA  25.73        Baixa  0.13  0.16  0.55  0.50  0.21
+46       Bom Jesus da Lapa  BA  25.35        Baixa  0.11  0.28  0.30  0.49  0.34
+47                    Codó  MA  23.70        Baixa  0.37  0.06  0.34  0.44  0.19
+48          Barra do Corda  MA  21.59        Baixa  0.20  0.11  0.21  0.62  0.21
+49         Itapecuru Mirim  MA  21.27        Baixa  0.21  0.15  0.21  0.41  0.21
+50                Goianira  GO  20.74        Baixa  0.53  0.05  0.14  0.53  0.26
+51                  Tutóia  MA  19.27        Baixa  0.10  0.24  0.31  0.45  0.08
+52                 Coroatá  MA  17.64        Baixa  0.10  0.15  0.27  0.40  0.13
+53                  Grajaú  MA  14.20        Baixa  0.14  0.00  0.71  0.39  0.13
+54            Barreirinhas  MA  11.66        Baixa  0.05  0.03  0.32  0.49  0.14
+
+Quadro 6
+                n     IDF  idhm_2010  gini_2010  pop_mil  pib_pc_mil
+Alta          14  59.330      0.747      0.518  143.305      81.464
+Média-alta    13  50.063      0.728      0.539  114.537      56.900
+Média-baixa   13  39.698      0.720      0.499  159.375      37.098
+Baixa         14  22.179      0.619      0.551   97.501      13.793
+MT            13  55.892      0.739      0.503  123.092      79.533
+MS             6  47.721      0.719      0.522  117.013      56.934
+GO            14  42.231      0.729      0.482  165.042      43.440
+MA            14  26.343      0.624      0.571  112.032      18.430
+TO             4  50.511      0.754      0.565   98.696      38.741
+BA             3  44.336      0.690      0.593  118.678      52.965
+Centro-Oeste  33  48.611      0.731      0.498  139.784      60.112
+MATOPIBA      21  33.516      0.658      0.573  110.441      27.232
+
+y = 1 (IDF > mediana 45.10): 27 de 54
+
+===== M1 =====
+              Coef.  Std.Err.       z   P>|z|   [0.025   0.975]
+const     -16.9160    6.8681 -2.4630  0.0138 -30.3772  -3.4547
+idhm_2010  28.7384    8.7433  3.2869  0.0010  11.6017  45.8750
+ln_pop     -0.3124    0.3534 -0.8841  0.3767  -1.0051   0.3802
+
+===== M2 =====
+              Coef.  Std.Err.       z   P>|z|   [0.025   0.975]
+const     -32.8976   10.9621 -3.0010  0.0027 -54.3829 -11.4123
+idhm_2010  17.1871   10.9062  1.5759  0.1150  -4.1887  38.5630
+ln_pop     -0.1155    0.3950 -0.2924  0.7700  -0.8896   0.6586
+ln_pibpc    2.0650    0.6931  2.9793  0.0029   0.7065   3.4235
+
+===== M3 =====
+              Coef.  Std.Err.       z   P>|z|   [0.025   0.975]
+const     -16.8309    8.5819 -1.9612  0.0499 -33.6511  -0.0107
+idhm_2010  28.6898    9.2180  3.1124  0.0019  10.6230  46.7567
+ln_pop     -0.3171    0.4520 -0.7015  0.4830  -1.2030   0.5688
+campus      0.0097    0.5898  0.0165  0.9868  -1.1463   1.1658
+
+===== M4 =====
+                Coef.  Std.Err.       z   P>|z|   [0.025   0.975]
+const       -29.6245   13.2007 -2.2442  0.0248 -55.4973  -3.7516
+idhm_2010    11.0395   13.5248  0.8162  0.4144 -15.4686  37.5476
+ln_pop       -0.4860    0.6281 -0.7739  0.4390  -1.7170   0.7449
+ln_pibpc      2.6010    1.0459  2.4869  0.0129   0.5511   4.6509
+campus        0.4262    0.7591  0.5614  0.5745  -1.0616   1.9139
+agro_va_pct  -0.0234    0.0322 -0.7270  0.4672  -0.0866   0.0398
+
+===== M5 (extensão) =====
+              Coef.  Std.Err.       z   P>|z|   [0.025   0.975]
+const     -23.7559    7.3154 -3.2474  0.0012 -38.0938  -9.4180
+idhm_2010  32.1877    8.5631  3.7589  0.0002  15.4043  48.9711
+ln_pop     -0.4644    0.3936 -1.1798  0.2381  -1.2359   0.3071
+gini_2010  11.8866    5.3356  2.2278  0.0259   1.4290  22.3441
+
+===== M6 (M1+MATOPIBA) =====
+              Coef.  Std.Err.       z   P>|z|   [0.025   0.975]
+const     -19.1564    6.8879 -2.7812  0.0054 -32.6564  -5.6564
+idhm_2010  33.5615    9.4987  3.5333  0.0004  14.9444  52.1787
+ln_pop     -0.4347    0.3772 -1.1524  0.2491  -1.1741   0.3046
+matopiba    0.8670    0.6345  1.3664  0.1718  -0.3767   2.1107
+
+===== M7 (M4+MATOPIBA) =====
+                Coef.  Std.Err.       z   P>|z|   [0.025   0.975]
+const       -35.2677   14.6077 -2.4143  0.0158 -63.8982  -6.6371
+idhm_2010    10.3898   14.2048  0.7314  0.4645 -17.4510  38.2306
+ln_pop       -0.5276    0.6554 -0.8051  0.4208  -1.8121   0.7568
+ln_pibpc      3.2079    1.2535  2.5592  0.0105   0.7511   5.6646
+campus        0.2580    0.8186  0.3151  0.7527  -1.3465   1.8624
+agro_va_pct  -0.0283    0.0338 -0.8375  0.4023  -0.0945   0.0379
+matopiba      1.2275    0.7086  1.7324  0.0832  -0.1612   2.6163
+
+Quadro 7 - Probit (coef., erro-padrão entre parênteses; *** p<0,01 ** p<0,05 * p<0,10)
+                                         M1                   M2                 M3                  M4       M5 (extensão)    M6 (M1+MATOPIBA)    M7 (M4+MATOPIBA)
+Constante                -16.916** (6.868)  -32.898*** (10.962)  -16.831** (8.582)  -29.624** (13.201)  -23.756*** (7.315)  -19.156*** (6.888)  -35.268** (14.608)
+IDHM                     28.738*** (8.743)      17.187 (10.906)  28.690*** (9.218)     11.040 (13.525)   32.188*** (8.563)   33.562*** (9.499)     10.390 (14.205)
+ln(Pop)                     -0.312 (0.353)       -0.115 (0.395)     -0.317 (0.452)      -0.486 (0.628)      -0.464 (0.394)      -0.435 (0.377)      -0.528 (0.655)
+ln(PIB p.c.)                             —     2.065*** (0.693)                  —     2.601** (1.046)                   —                   —     3.208** (1.253)
+Campus                                   —                    —      0.010 (0.590)       0.426 (0.759)                   —                   —       0.258 (0.819)
+Agropecuária (% VA)                      —                    —                  —      -0.023 (0.032)                   —                   —      -0.028 (0.034)
+Gini 2010                                —                    —                  —                   —    11.887** (5.336)                   —                   —
+MATOPIBA                                 —                    —                  —                   —                   —       0.867 (0.635)      1.228* (0.709)
+Pseudo-R² McFadden                   0.384                0.545              0.384               0.554               0.465               0.412               0.601
+% Classificação correta               77.8                 92.6               77.8                88.9                77.8                77.8                90.7
+Log-verossimilhança                 -23.07               -17.02             -23.07              -16.68              -20.02              -22.02              -14.94
+LR chi² (p)                 28.72 (0.0000)       40.82 (0.0000)     28.72 (0.0000)      41.50 (0.0000)      34.82 (0.0000)      30.82 (0.0000)      44.98 (0.0000)
+AIC                                  52.14                42.04              54.14               45.36               48.04               52.04               43.88
+n                                       54                   54                 54                  54                  54                  54                  54
+
+Efeitos marginais
+               modelo             variavel  EM_na_media  p_EM_media  EM_medio_AME   p_AME
+0                 M1                 IDHM      10.8210      0.0001        6.8730  0.0000
+1                 M1              ln(Pop)      -0.1176      0.3757       -0.0747  0.3664
+2                 M2                 IDHM       6.0994      0.0586        3.1741  0.0893
+3                 M2              ln(Pop)      -0.0410      0.7696       -0.0213  0.7694
+4                 M2         ln(PIB p.c.)       0.7328      0.0037        0.3814  0.0000
+5                 M3                 IDHM      10.8055      0.0002        6.8621  0.0000
+6                 M3              ln(Pop)      -0.1194      0.4854       -0.0758  0.4784
+7                 M3               Campus       0.0037      0.9868        0.0023  0.9868
+8                 M4                 IDHM       4.0452      0.3739        1.9929  0.4068
+9                 M4              ln(Pop)      -0.1781      0.4521       -0.0877  0.4287
+10                M4         ln(PIB p.c.)       0.9531      0.0201        0.4695  0.0008
+11                M4               Campus       0.1562      0.5850        0.0769  0.5720
+12                M4  Agropecuária (% VA)      -0.0086      0.4773       -0.0042  0.4530
+13     M5 (extensão)                 IDHM      12.4424      0.0000        6.7065  0.0000
+14     M5 (extensão)              ln(Pop)      -0.1795      0.2352       -0.0968  0.2198
+15     M5 (extensão)            Gini 2010       4.5949      0.0283        2.4766  0.0092
+16  M6 (M1+MATOPIBA)                 IDHM      12.9090      0.0001        7.6184  0.0000
+17  M6 (M1+MATOPIBA)              ln(Pop)      -0.1672      0.2501       -0.0987  0.2289
+18  M6 (M1+MATOPIBA)             MATOPIBA       0.3335      0.1814        0.1968  0.1465
+19  M7 (M4+MATOPIBA)                 IDHM       3.9786      0.4420        1.6559  0.4586
+20  M7 (M4+MATOPIBA)              ln(Pop)      -0.2020      0.4295       -0.0841  0.4078
+21  M7 (M4+MATOPIBA)         ln(PIB p.c.)       1.2284      0.0140        0.5113  0.0004
+22  M7 (M4+MATOPIBA)               Campus       0.0988      0.7551        0.0411  0.7520
+23  M7 (M4+MATOPIBA)  Agropecuária (% VA)      -0.0108      0.4098       -0.0045  0.3828
+24  M7 (M4+MATOPIBA)             MATOPIBA       0.4701      0.0961        0.1956  0.0397
+M1: separação perfeita/quase perfeita = False; avisos = -
+M2: separação perfeita/quase perfeita = False; avisos = -
+M3: separação perfeita/quase perfeita = False; avisos = -
+M4: separação perfeita/quase perfeita = False; avisos = -
+M5 (extensão): separação perfeita/quase perfeita = False; avisos = -
+M6 (M1+MATOPIBA): separação perfeita/quase perfeita = False; avisos = -
+M7 (M4+MATOPIBA): separação perfeita/quase perfeita = False; avisos = -
+
+Correlação entre regressores
+              idhm_2010  ln_pop  ln_pibpc  campus  agro_va_pct  gini_2010  matopiba
+idhm_2010        1.000   0.258     0.815   0.412        0.292     -0.418    -0.623
+ln_pop           0.258   1.000     0.084   0.620       -0.388     -0.117    -0.101
+ln_pibpc         0.815   0.084     1.000   0.189        0.649     -0.301    -0.590
+campus           0.412   0.620     0.189   1.000       -0.168     -0.057    -0.140
+agro_va_pct      0.292  -0.388     0.649  -0.168        1.000      0.029    -0.292
+gini_2010       -0.418  -0.117    -0.301  -0.057        0.029      1.000     0.685
+matopiba        -0.623  -0.101    -0.590  -0.140       -0.292      0.685     1.000
+
+Arquivos salvos em resultados_54_matopiba
