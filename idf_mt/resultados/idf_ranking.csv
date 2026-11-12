@@ -1,0 +1,34 @@
+posicao,municipio,uf,IDF,faixa,S_D1,S_D2,S_D3,S_D4,S_D5
+1,Lucas do Rio Verde,MT,68.424,Alta,0.722,0.77,0.723,0.569,0.586
+2,Tangará da Serra,MT,59.194,Alta,0.75,0.581,0.626,0.482,0.457
+3,Alta Floresta,MT,59.1,Alta,0.559,0.81,0.543,0.537,0.538
+4,Nova Mutum,MT,59.097,Alta,0.547,1.0,0.529,0.519,0.456
+5,Sorriso,MT,56.557,Alta,0.774,0.662,0.525,0.583,0.298
+6,Dourados,MS,56.346,Alta,0.893,0.488,0.432,0.414,0.671
+7,Rondonópolis,MT,55.92,Alta,0.823,0.492,0.434,0.55,0.54
+8,Primavera do Leste,MT,55.875,Alta,0.862,0.564,0.435,0.603,0.377
+9,Catalão,GO,55.385,Média-alta,0.843,0.549,0.35,0.487,0.68
+10,Sinop,MT,55.182,Média-alta,0.849,0.418,0.501,0.512,0.493
+11,Rio Verde,GO,54.957,Média-alta,0.756,0.452,0.515,0.599,0.429
+12,Três Lagoas,MS,54.366,Média-alta,0.785,0.428,0.541,0.415,0.535
+13,Itumbiara,GO,51.632,Média-alta,0.867,0.403,0.44,0.485,0.421
+14,Barra do Garças,MT,48.066,Média-alta,0.369,0.468,0.477,0.497,0.757
+15,Mineiros,GO,47.346,Média-alta,0.579,0.382,0.399,0.568,0.501
+16,Anápolis,GO,46.075,Média-alta,0.768,0.369,0.272,0.469,0.623
+17,Campo Novo do Parecis,MT,45.695,Média-baixa,0.348,0.821,0.397,0.575,0.331
+18,Várzea Grande,MT,41.175,Média-baixa,0.822,0.22,0.332,0.357,0.496
+19,Ponta Porã,MS,41.037,Média-baixa,0.383,0.488,0.297,0.476,0.54
+20,Jataí,GO,40.492,Média-baixa,0.735,0.253,0.297,0.454,0.418
+21,Naviraí,MS,40.258,Média-baixa,0.389,0.506,0.365,0.55,0.271
+22,Caldas Novas,GO,38.865,Média-baixa,0.736,0.164,0.342,0.443,0.458
+23,Morrinhos,GO,37.693,Média-baixa,0.383,0.268,0.342,0.461,0.557
+24,Goianésia,GO,37.524,Média-baixa,0.264,0.37,0.5,0.589,0.271
+25,Pontes e Lacerda,MT,37.331,Baixa,0.374,0.611,0.394,0.601,0.109
+26,Nova Andradina,MS,36.692,Baixa,0.216,0.681,0.378,0.529,0.257
+27,Inhumas,GO,34.96,Baixa,0.689,0.32,0.199,0.642,0.177
+28,Cáceres,MT,29.268,Baixa,0.169,0.283,0.329,0.359,0.513
+29,Corumbá,MS,28.647,Baixa,0.344,0.216,0.228,0.313,0.414
+30,Senador Canedo,GO,26.975,Baixa,0.861,0.083,0.148,0.364,0.381
+31,Aparecida de Goiânia,GO,23.205,Baixa,0.907,0.022,0.176,0.503,0.408
+32,Trindade,GO,20.797,Baixa,0.665,0.098,0.067,0.453,0.247
+33,Goianira,GO,12.021,Baixa,0.488,0.0,0.127,0.463,0.076

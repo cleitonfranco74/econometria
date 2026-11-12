@@ -1,0 +1,17 @@
+,indicador,mean,std,min,max,cv_%
+I01,BL fixa/100 dom,64.24,22.63,17.84,106.45,35.22
+I02,4G (% moradores),93.85,4.73,84.65,99.97,5.04
+I03,5G (% moradores),71.83,34.36,0.0,99.87,47.84
+I04,Backhaul (presença),1.0,0.0,1.0,1.0,0.0
+I05,PA fin./10 mil hab,1.59,0.45,0.63,2.45,28.37
+I06,Coop./10 mil hab,0.61,0.34,0.13,1.63,56.16
+I07,Pix receb. PJ/mês por empresa,40.35,8.63,30.11,81.55,21.4
+I08,Empresas recebedoras Pix (%),40.48,3.48,33.98,48.02,8.6
+I09,Crédito/empresa (R$ mil),213.68,104.26,36.25,444.15,48.79
+I10,Empresas ativas/1000 hab,121.4,19.6,81.49,158.12,16.14
+I11,Simples Nacional (%),70.23,3.42,62.95,76.4,4.87
+I12,Tx. abertura (%),22.13,2.8,17.72,28.5,12.66
+I13,Tx. encerramento (%),8.06,0.83,6.57,9.71,10.31
+I14,Idade média (anos),6.75,0.93,4.95,8.57,13.71
+I15,Adultos 25+ médio+ (%),49.77,4.47,40.71,58.92,8.98
+I16,Pessoas 18+ estudando/1000 hab (proxy),73.73,21.02,40.24,137.52,28.51
