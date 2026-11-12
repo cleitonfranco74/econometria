@@ -34,12 +34,12 @@ mun_rf = pd.read_csv(f"{BR}/municipios_rf.csv", dtype=str)
 mun_rf["nome_n"] = mun_rf.nome.map(norm)
 
 cols = ["cnpj_basico", "situacao", "data_situacao", "data_inicio", "uf", "cod_rf_municipio"]
-est = pd.concat([pd.read_csv(f, dtype=str, usecols=cols) for f in sorted(glob.glob(f"{BR}/estab_co_*.csv"))])
-print("estabelecimentos MT/MS/GO:", len(est))
+est = pd.concat([pd.read_csv(f, dtype=str, usecols=cols) for f in sorted(glob.glob(f"{BR}/estab_*_[0-9].csv"))])
+print("estabelecimentos (UFs baixadas):", len(est))
 est = est.merge(mun_rf[["cod_rf", "nome_n"]], left_on="cod_rf_municipio", right_on="cod_rf", how="left")
 est["chave"] = est.uf + "|" + est.nome_n
 est = est.merge(base[["chave", "cod_ibge"]], on="chave", how="inner")
-print("estabelecimentos nos 33 municípios:", len(est), "| municípios casados:", est.cod_ibge.nunique())
+print("estabelecimentos nos municípios da amostra:", len(est), "| municípios casados:", est.cod_ibge.nunique())
 
 for c in ["data_situacao", "data_inicio"]:
     est[c] = pd.to_numeric(est[c], errors="coerce").fillna(0).astype(int)
@@ -52,7 +52,7 @@ abertura = est.data_inicio.between(INI, REF)
 baixa = (est.situacao == "08") & est.data_situacao.between(INI, REF) & (est.data_inicio < INI)
 
 # ---- Simples Nacional na data de referência
-sim = pd.read_csv(f"{BR}/simples_co.csv", dtype=str)
+sim = pd.concat([pd.read_csv(f, dtype=str) for f in glob.glob(f"{BR}/simples_*.csv")]).drop_duplicates("cnpj_basico")
 for c in ["data_opcao_simples", "data_exclusao_simples"]:
     sim[c] = pd.to_numeric(sim[c], errors="coerce").fillna(0).astype(int)
 optante = sim[(sim.opcao_simples == "S") |

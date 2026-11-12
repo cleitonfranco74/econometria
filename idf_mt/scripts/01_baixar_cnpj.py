@@ -14,8 +14,10 @@ from concurrent.futures import ThreadPoolExecutor
 
 BASE = "https://arquivos.receitafederal.gov.br/public.php/webdav/2025-01/"
 TOKEN = "YggdBLfdninEJX9"   # compartilhamento público da Receita (dados abertos CNPJ)
+# uso: python3 01_baixar_cnpj.py <pasta_saida> [UFs separadas por vírgula] [prefixo]
 OUT = sys.argv[1] if len(sys.argv) > 1 else "dados/brutos/cnpj"
-UFS = {"MT", "MS", "GO"}
+UFS = set((sys.argv[2] if len(sys.argv) > 2 else "MT,MS,GO").split(","))
+PREF = sys.argv[3] if len(sys.argv) > 3 else "co"          # "co" = Centro-Oeste; "mtp" = MATOPIBA
 os.makedirs(OUT, exist_ok=True)
 
 
@@ -44,7 +46,7 @@ COLS = {0: "cnpj_basico", 3: "matriz_filial", 5: "situacao", 6: "data_situacao",
 
 
 def estabelecimentos(i):
-    final = os.path.join(OUT, f"estab_co_{i}.csv")
+    final = os.path.join(OUT, f"estab_{PREF}_{i}.csv")
     if os.path.exists(final):
         return
     nome = f"Estabelecimentos{i}.zip"
@@ -76,12 +78,12 @@ with ThreadPoolExecutor(max_workers=6) as ex:
     zp_simples = fut_simples.result()
 
 basicos = set()
-for f in glob.glob(os.path.join(OUT, "estab_co_*.csv")):
+for f in glob.glob(os.path.join(OUT, f"estab_{PREF}_*.csv")):
     with open(f) as h:
         for row in csv.DictReader(h):
             basicos.add(row["cnpj_basico"])
 
-with open(os.path.join(OUT, "simples_co.csv"), "w", newline="") as g:
+with open(os.path.join(OUT, f"simples_{PREF}.csv"), "w", newline="") as g:
     w = csv.writer(g)
     w.writerow(["cnpj_basico", "opcao_simples", "data_opcao_simples", "data_exclusao_simples",
                 "opcao_mei", "data_opcao_mei", "data_exclusao_mei"])

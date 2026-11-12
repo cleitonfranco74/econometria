@@ -39,10 +39,23 @@ AMOSTRA = {
     5211909: "Jataí", 5204508: "Caldas Novas", 5208806: "Goianira", 5208608: "Goianésia",
     5213103: "Mineiros", 5213806: "Morrinhos", 5210000: "Inhumas",
 }
-UF = {"50": "MS", "51": "MT", "52": "GO"}
+# Expansão (Abordagem A): municípios do MATOPIBA (lista oficial IBGE/Portaria MAPA 244/2015,
+# arquivo MATOPIBA_2021.xls do IBGE) com 50 mil a 600 mil hab. em 2024, sem capitais -> 21
+MATOPIBA = {
+    2105302: "Imperatriz", 2112209: "Timon", 1702109: "Araguaína", 2903201: "Barreiras",
+    2103000: "Caxias", 2103307: "Codó", 2919553: "Luís Eduardo Magalhães", 2100055: "Açailândia",
+    2101202: "Bacabal", 2101400: "Balsas", 1709500: "Gurupi", 2101608: "Barra do Corda",
+    2103208: "Chapadinha", 2104800: "Grajaú", 2903904: "Bom Jesus da Lapa",
+    1718204: "Porto Nacional", 2101707: "Barreirinhas", 2105401: "Itapecuru Mirim",
+    2103604: "Coroatá", 1716109: "Paraíso do Tocantins", 2112506: "Tutóia",
+}
+AMOSTRA.update(MATOPIBA)
+UF = {"50": "MS", "51": "MT", "52": "GO", "21": "MA", "17": "TO", "22": "PI", "29": "BA"}
 COD = list(AMOSTRA)
 df = pd.DataFrame({"cod_ibge": COD, "municipio": [AMOSTRA[c] for c in COD]})
 df["uf"] = df.cod_ibge.astype(str).str[:2].map(UF)
+df["matopiba"] = df.cod_ibge.isin(MATOPIBA).astype(int)
+df["regiao"] = np.where(df.matopiba == 1, "MATOPIBA", "Centro-Oeste")
 
 
 def norm(s):
@@ -139,7 +152,7 @@ df["credito_dez24"] = (df.uf + "|" + df.municipio.map(norm)).map(cred)   # R$
 
 # ---------------------------------------------------------------- BCB: Pix (2024)
 pix = []
-for uf_ibge in (50, 51, 52):
+for uf_ibge in (50, 51, 52, 21, 17, 29):
     filtro = f"Estado_Ibge eq {uf_ibge} and AnoMes ge 202401 and AnoMes le 202412"
     q = "&".join(f"{k}={urllib.parse.quote(str(v), safe=',')}" for k, v in
                  {"@DataBase": "'202401'", "$filter": filtro, "$format": "json", "$top": 100000,
