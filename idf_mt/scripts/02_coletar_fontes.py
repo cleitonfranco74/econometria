@@ -164,9 +164,14 @@ df["campus"] = df.cod_ibge.isin(ies.id_municipio).astype(int)
 
 # ---------------------------------------------------------------- IDHM (Atlas Brasil)
 atl = pd.read_excel(f"{BR}/atlas/censo_total_1991_2010.xlsx", sheet_name="MUN 91-00-10",
-                    usecols=["ANO", "Codmun7", "IDHM"])
-atl = atl[atl.ANO == 2010].set_index("Codmun7").IDHM
-df["idhm_2010"] = df.cod_ibge.map(atl)
+                    usecols=["ANO", "Codmun7", "IDHM", "GINI", "THEIL"])
+atl = atl[atl.ANO == 2010].set_index("Codmun7")
+df["idhm_2010"] = df.cod_ibge.map(atl.IDHM)
+# Índice de Gini da renda domiciliar per capita (Censo 2010, Atlas Brasil).
+# Obs.: os microdados públicos do Censo 2022 não identificam o município, e o IBGE
+# não publicou Gini municipal de 2022 no SIDRA até a data da coleta.
+df["gini_2010"] = df.cod_ibge.map(atl.GINI)
+df["theil_2010"] = df.cod_ibge.map(atl.THEIL)
 
 df.to_csv("dados/processados/fontes_nao_cnpj.csv", index=False)
 print(df.to_string())

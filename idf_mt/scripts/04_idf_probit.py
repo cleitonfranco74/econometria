@@ -120,7 +120,7 @@ print("\nRanking\n", ranking.round(2).to_string())
 # ------------------------------------------------------------ Quadro 6: por grupo
 df["pop_mil"] = df.pop_2024 / 1000
 df["pib_pc_mil"] = df.pib_pc_2021 / 1000
-agg = {"IDF": "mean", "idhm_2010": "mean", "pop_mil": "mean", "pib_pc_mil": "mean"}
+agg = {"IDF": "mean", "idhm_2010": "mean", "gini_2010": "mean", "pop_mil": "mean", "pib_pc_mil": "mean"}
 g1 = df.groupby("faixa", observed=True).agg(n=("IDF", "size"), **{k: (k, v) for k, v in agg.items()})
 g2 = df.groupby("uf").agg(n=("IDF", "size"), **{k: (k, v) for k, v in agg.items()})
 q6 = pd.concat([g1.iloc[::-1], g2.loc[["MT", "MS", "GO"]]])
@@ -136,9 +136,11 @@ MODELOS = {
     "M2": ["idhm_2010", "ln_pop", "ln_pibpc"],
     "M3": ["idhm_2010", "ln_pop", "campus"],
     "M4": ["idhm_2010", "ln_pop", "ln_pibpc", "campus", "agro_va_pct"],
+    "M5 (extensão)": ["idhm_2010", "ln_pop", "gini_2010"],   # não consta no artigo
 }
 NOMES = {"const": "Constante", "idhm_2010": "IDHM", "ln_pop": "ln(Pop)", "ln_pibpc": "ln(PIB p.c.)",
-         "campus": "Campus", "agro_va_pct": "Agropecuária (% VA)"}
+         "campus": "Campus", "agro_va_pct": "Agropecuária (% VA)",
+         "gini_2010": "Gini 2010"}
 print(f"\ny = 1 (IDF > mediana {df.IDF.median():.2f}): {df.y.sum()} de {len(df)}")
 
 
@@ -175,7 +177,7 @@ for m, xs in MODELOS.items():
     resumo.append(f"{m}: separação perfeita/quase perfeita = {sep}; avisos = {set(avisos) or '-'}")
     print(f"\n===== {m} =====\n", r.summary2().tables[1].round(4).to_string())
 
-ordem = ["Constante", "IDHM", "ln(Pop)", "ln(PIB p.c.)", "Campus", "Agropecuária (% VA)",
+ordem = ["Constante", "IDHM", "ln(Pop)", "ln(PIB p.c.)", "Campus", "Agropecuária (% VA)", "Gini 2010",
          "Pseudo-R² McFadden", "% Classificação correta", "Log-verossimilhança", "LR chi² (p)", "AIC", "n"]
 q7 = pd.DataFrame(tab).reindex(ordem).fillna("—")
 q7.to_csv(f"{OUT}/q7_probit.csv")
@@ -187,7 +189,7 @@ print("\nEfeitos marginais\n", ef.round(4).to_string())
 print("\n".join(resumo))
 
 # correlações entre regressores (multicolinearidade)
-cor = df[["idhm_2010", "ln_pop", "ln_pibpc", "campus", "agro_va_pct"]].corr().round(3)
+cor = df[["idhm_2010", "ln_pop", "ln_pibpc", "campus", "agro_va_pct", "gini_2010"]].corr().round(3)
 cor.to_csv(f"{OUT}/correlacao_regressores.csv")
 print("\nCorrelação entre regressores\n", cor.to_string())
 
