@@ -1,5 +1,5 @@
 ,rho_Spearman,variacao_media_posicoes
-"Pesos iguais, agregação geométrica",0.993,0.788
-"Pesos por PCA, agregação geométrica",0.801,4.303
-"Pesos Delphi, agregação aritmética",0.963,1.818
-Normalização por escore z (agregação aritmética),0.972,1.636
+"Pesos iguais, agregação geométrica",0.995,0.667
+"Pesos por PCA, agregação geométrica",0.824,4.424
+"Pesos Delphi, agregação aritmética",0.975,1.515
+Normalização por escore z (agregação aritmética),0.983,1.394

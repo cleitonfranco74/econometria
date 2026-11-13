@@ -92,7 +92,15 @@ base["I14"] = base.idade_media
 
 # ---------------------------------------------------------------- D5 Capital humano (Censo 2022)
 base["I15"] = (base.pop25_medio_sup_inc + base.pop25_superior) / base.pop25_total * 100
-base["I16"] = base.freq_superior_2022 / base.pop_2024 * 1e3  # proxy de matrículas (INEP indisponível)
+base["I16_censo2022"] = base.freq_superior_2022 / base.pop_2024 * 1e3  # proxy antiga (Censo 2022)
+inep = pd.read_csv(RAW / "inep_municipal.csv", dtype={"cod_ibge": str})
+base = base.merge(inep, on="cod_ibge", how="left")
+cols_inep = ["mat_tecnicas_2024", "mat_superior_presencial_2024", "n_cursos_presenciais_2024",
+             "n_ies_presenciais_2024", "n_ies_publicas_2024", "campus", "campus_publico", "campus_qualquer",
+             "campus_univ_publica", "campus_univ_federal", "campus_if", "campus_universidade"]
+base[cols_inep] = base[cols_inep].fillna(0)
+# I16 conforme o artigo: matrículas técnicas (Censo Escolar) + superiores presenciais (Censo Superior), INEP 2024
+base["I16"] = (base.mat_tecnicas_2024 + base.mat_superior_presencial_2024) / base.pop_2024 * 1e3
 
 # ---------------------------------------------------------------- controles
 base["ln_pop"] = np.log(base.pop_2024)

@@ -40,7 +40,7 @@ NOMES = {
     "I05": "PA financeiro/10 mil hab", "I06": "PAC cooperativas/10 mil hab", "I07": "Pix PJ trans./empresa/mês",
     "I08": "Empresas recebedoras Pix (%)", "I09": "Crédito/empresa (R$ mil)", "I10": "Empresas ativas/1000 hab",
     "I11": "Optantes Simples (%)", "I12": "Taxa de abertura (%)", "I13": "Taxa de encerramento (%)",
-    "I14": "Idade média (anos)", "I15": "25+ com médio completo+ (%)", "I16": "Freq. ensino superior/1000 hab"}
+    "I14": "Idade média (anos)", "I15": "25+ com médio completo+ (%)", "I16": "Matrículas técnicas e superiores/1000 hab"}
 out_txt = []
 
 
@@ -145,18 +145,20 @@ log("\nQuadro 5 — Robustez do ranking\n" + q5.round(3).to_string())
 # ---------------------------------------------------------------- determinantes
 am["pop_mil"] = am.pop_2024 / 1e3
 am["pib_pc_mil"] = am.pib_pc_2021 / 1e3
-q6 = am[["idhm_2010", "pop_mil", "pib_pc_mil", "agro_va_pct"]].agg(["mean", "std", "min", "max"]).T
+q6 = am[["idhm_2010", "pop_mil", "pib_pc_mil", "campus", "agro_va_pct"]].agg(["mean", "std", "min", "max"]).T
 q6["corr_IDF"] = [am[c].corr(am.IDF) for c in q6.index]
-q6.index = ["IDHM (2010)", "População 2024 (mil)", "PIB per capita 2021 (R$ mil)", "Agropecuária no VA 2021 (%)"]
+q6.index = ["IDHM (2010)", "População 2024 (mil)", "PIB per capita 2021 (R$ mil)",
+            "Campus de ensino superior presencial (proporção)", "Agropecuária no VA 2021 (%)"]
 q6.round(3).to_csv(RES / "quadro6_explicativas.csv")
 log("\nQuadro 6 — Variáveis explicativas\n" + q6.round(3).to_string())
 
-# Quadro 7 — MQO com erros HC3. Campus (M3) não construído: INEP/e-MEC indisponíveis neste ambiente.
+# Quadro 7 — MQO com erros HC3. Campus = curso superior presencial no município (Censo Superior 2024).
 specs = {"M1": "IDF ~ idhm_2010 + ln_pop",
          "M2": "IDF ~ idhm_2010 + ln_pop + ln_pib_pc",
-         "M4*": "IDF ~ idhm_2010 + ln_pop + ln_pib_pc + agro_va_pct",
-         "M5*": "IDF ~ idhm_2010 + ln_pop + ln_pib_pc + agro_va_pct + C(uf)"}
-VARS = ["Intercept", "idhm_2010", "ln_pop", "ln_pib_pc", "agro_va_pct", "C(uf)[T.MS]", "C(uf)[T.MT]"]
+         "M3": "IDF ~ idhm_2010 + ln_pop + ln_pib_pc + campus",
+         "M4": "IDF ~ idhm_2010 + ln_pop + ln_pib_pc + campus + agro_va_pct",
+         "M5": "IDF ~ idhm_2010 + ln_pop + ln_pib_pc + campus + agro_va_pct + C(uf)"}
+VARS = ["Intercept", "idhm_2010", "ln_pop", "ln_pib_pc", "campus", "agro_va_pct", "C(uf)[T.MS]", "C(uf)[T.MT]"]
 q7, fits = {}, {}
 for m, f in specs.items():
     r = smf.ols(f, am).fit(cov_type="HC3")

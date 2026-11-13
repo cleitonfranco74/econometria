@@ -10,9 +10,11 @@ pip install pandas numpy scipy statsmodels
 python scripts/coleta_apis.py                 # IBGE, BCB, Anatel, Ipeadata  (~2 min)
 python scripts/cnpj_download_filter.py Estabelecimentos0 ... Estabelecimentos9   # Receita (~5,5 GB, filtra MT/MS/GO)
 python scripts/cnpj_download_filter.py Simples
+python scripts/coleta_inep.py                 # INEP: matrículas e Campus (requer os zips em data/raw/inep)
 python scripts/build_indicadores.py           # monta data/processed/base_municipal_CO.csv
 python scripts/idf_modelo.py artigo           # amostra do artigo (n = 33)
 python scripts/idf_modelo.py todos            # variante: todos os 50-600 mil hab. sem capitais (n = 42)
+python scripts/exporta_stata.py               # stata/idf_mp.dta
 ```
 
 `data/raw/` não vai para o Git (arquivos grandes; é regenerado pelos scripts). As bases tratadas
@@ -37,7 +39,7 @@ ficam em `data/processed/` e os quadros do artigo em `resultados/<amostra>/`.
 | I13 | Taxa de encerramento (%) (−) | estabelecimentos baixados (situação 08) em 2024 ÷ (ativos + baixados) | 2024 |
 | I14 | Idade média das empresas ativas | data de início de atividade, em 31/12/2024 | 2024 |
 | I15 | 25+ com médio completo ou mais (%) | IBGE SIDRA 10061 (Censo 2022) | 2022 |
-| I16 | Matrículas no ensino superior / 1.000 hab. | **proxy**: pessoas 18+ que frequentavam graduação/pós, SIDRA 10059 (Censo 2022) | 2022 |
+| I16 | Matrículas técnicas e superiores / 1.000 hab. | INEP: Censo Escolar 2024 (`QT_MAT_PROF_TEC`) + Censo da Educação Superior 2024 (cursos presenciais) | 2024 |
 
 Controles do probit: IDHM 2010 (Ipeadata `ADH_IDHM`), ln(população 2024) (SIDRA 6579),
 ln(PIB per capita 2021) e % do VA agropecuário 2021 (SIDRA 5938; 2021 é o último ano com VA municipal no SIDRA).
@@ -49,10 +51,12 @@ ln(PIB per capita 2021) e % do VA agropecuário 2021 (SIDRA 5938; 2021 é o últ
    (Águas Lindas, Luziânia, Valparaíso, Planaltina, Novo Gama, Cidade Ocidental, Sto. Antônio do Descoberto,
    Formosa, Cristalina) obtêm-se exatamente **33 municípios (MT 13, MS 6, GO 14)**. Com a população do
    Censo 2022 (como diz o texto do IDF-MP) seriam 31 (Campo Novo do Parecis e Nova Andradina ficam abaixo de 50 mil).
-2. **I16 / Campus (INEP).** O servidor `download.inep.gov.br` envia cadeia TLS incompleta e o download foi
-   bloqueado neste ambiente; I16 usa a proxy do Censo 2022 e a variável *Campus* (M3, M4) não foi construída.
-   `M4*` e `M5*` são M4 e M5 sem Campus; M3 não é estimado.
-   A validade externa com o IBC (Anatel) e a correlação com o ICI-MP também não foram calculadas.
+2. **INEP (I16 e Campus).** `download.inep.gov.br` não envia o certificado intermediário; a cadeia é completada
+   com o certificado "RNP ICPEdu GR46 OV TLS CA 2025" (GlobalSign, endereço AIA do próprio certificado),
+   mantendo a verificação TLS. `scripts/coleta_inep.py` processa os microdados. *Campus* = curso presencial de
+   universidade federal (13 dos 33); "qualquer curso superior presencial" não varia (32 dos 33). Definições
+   alternativas (universidade pública, instituto federal, qualquer universidade) entram como robustez.
+   A validade externa com o IBC (Anatel) e a correlação com o ICI-MP não foram calculadas.
 3. **I04 (backhaul)** não entra (constante).
 4. Agências e postos vêm do cadastro vigente do BCB (não há série histórica por API); agências abertas
    depois de 2024 foram excluídas, mas encerramentos ocorridos depois de 2024 não podem ser revertidos.

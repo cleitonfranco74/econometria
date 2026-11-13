@@ -170,11 +170,13 @@ foreach a in iguais pca arit z {
 *------------------------------------------------------------------------------*
 gen double pop_mil = pop_2024 / 1000
 gen double pib_pc_mil = pib_pc_2021 / 1000
-tabstat idhm_2010 pop_mil pib_pc_mil agro_va_pct, statistics(mean sd min max) columns(statistics) format(%9.3f)
-pwcorr idf idhm_2010 pop_mil pib_pc_mil agro_va_pct
+tabstat idhm_2010 pop_mil pib_pc_mil campus agro_va_pct, statistics(mean sd min max) columns(statistics) format(%9.3f)
+pwcorr idf idhm_2010 pop_mil pib_pc_mil campus agro_va_pct
+tab uf campus
 
 *------------------------------------------------------------------------------*
-* 6. Quadro 8 — MQO com erros-padrão HC3 (M3 exige a variável Campus, não incluída)
+* 6. Quadro 8 — MQO com erros-padrão HC3
+*    Campus = campus de universidade federal com curso presencial (Censo Superior 2024)
 *------------------------------------------------------------------------------*
 regress idf idhm_2010 ln_pop, vce(hc3)
 estimates store M1
@@ -188,17 +190,28 @@ estimates store M2
 estat vif
 estat ic
 
-regress idf idhm_2010 ln_pop ln_pib_pc agro_va_pct, vce(hc3)
+regress idf idhm_2010 ln_pop ln_pib_pc campus, vce(hc3)
+estimates store M3
+estat vif
+estat ic
+
+regress idf idhm_2010 ln_pop ln_pib_pc campus agro_va_pct, vce(hc3)
 estimates store M4
 estat vif
 estat ic
 
-regress idf idhm_2010 ln_pop ln_pib_pc agro_va_pct i.uf_n, vce(hc3)
+regress idf idhm_2010 ln_pop ln_pib_pc campus agro_va_pct i.uf_n, vce(hc3)
 estimates store M5
 estat vif
 estat ic
 
-estimates table M1 M2 M4 M5, b(%9.2f) se(%9.2f) star(.1 .05 .01) stats(N r2_a aic bic)
+estimates table M1 M2 M3 M4 M5, b(%9.2f) se(%9.2f) star(.1 .05 .01) stats(N r2_a aic bic)
+
+* Definições alternativas de Campus (M3 e M5)
+foreach c in campus_univ_publica campus_if campus_universidade {
+    regress idf idhm_2010 ln_pop ln_pib_pc `c', vce(hc3)
+    regress idf idhm_2010 ln_pop ln_pib_pc `c' agro_va_pct i.uf_n, vce(hc3)
+}
 
 *------------------------------------------------------------------------------*
 * 7. Diagnósticos do M1 (estimado por MQO comum)
@@ -260,7 +273,7 @@ qreg idf idhm_2010 ln_pop, quantile(.5)
 *------------------------------------------------------------------------------*
 gsort -idf
 keep cod_ibge municipio uf amostra_artigo pop_2024 i01-i16 S_D1-S_D5 idf faixa alta ///
-    idf_iguais idf_pca idf_arit idf_z idhm_2010 ln_pop pib_pc_2021 ln_pib_pc agro_va_pct ///
+    idf_iguais idf_pca idf_arit idf_z idhm_2010 ln_pop pib_pc_2021 ln_pib_pc agro_va_pct campus ///
     resid_m1 cook
 save "idf_mp_calculado_`AMOSTRA'.dta", replace
 
