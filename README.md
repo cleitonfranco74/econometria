@@ -10,8 +10,9 @@ pip install pandas numpy scipy statsmodels
 python scripts/coleta_apis.py                 # IBGE, BCB, Anatel, Ipeadata  (~2 min)
 python scripts/cnpj_download_filter.py Estabelecimentos0 ... Estabelecimentos9   # Receita (~5,5 GB, filtra MT/MS/GO)
 python scripts/cnpj_download_filter.py Simples
-python scripts/idf_modelo.py principal        # amostra principal (n = 42)
-python scripts/idf_modelo.py sem_metro        # variante sem periferias metropolitanas de GO (n = 31)
+python scripts/build_indicadores.py           # monta data/processed/base_municipal_CO.csv
+python scripts/idf_modelo.py artigo           # amostra do artigo (n = 33)
+python scripts/idf_modelo.py todos            # variante: todos os 50-600 mil hab. sem capitais (n = 42)
 ```
 
 `data/raw/` não vai para o Git (arquivos grandes; é regenerado pelos scripts). As bases tratadas
@@ -43,15 +44,43 @@ ln(PIB per capita 2021) e % do VA agropecuário 2021 (SIDRA 5938; 2021 é o últ
 
 ## Diferenças em relação ao artigo (importante)
 
-1. **Amostra.** O artigo não lista os 33 municípios. A regra declarada (50–600 mil hab., sem capitais)
-   com a estimativa de população 2024 reproduz exatamente MT = 13 e MS = 6, mas dá **GO = 23** (o artigo tem 14).
-   Por isso há duas amostras: `principal` (n = 42) e `sem_metro` (n = 31, exclui RM de Goiânia e Entorno do DF).
+1. **Amostra.** Regra da versão IDF-MP: 50–600 mil hab., sem capitais e sem o entorno de Brasília.
+   Com a **estimativa populacional de 2024** e excluindo os 9 municípios goianos da RIDE-DF acima de 50 mil hab.
+   (Águas Lindas, Luziânia, Valparaíso, Planaltina, Novo Gama, Cidade Ocidental, Sto. Antônio do Descoberto,
+   Formosa, Cristalina) obtêm-se exatamente **33 municípios (MT 13, MS 6, GO 14)**. Com a população do
+   Censo 2022 (como diz o texto do IDF-MP) seriam 31 (Campo Novo do Parecis e Nova Andradina ficam abaixo de 50 mil).
 2. **I16 / Campus (INEP).** O servidor `download.inep.gov.br` envia cadeia TLS incompleta e o download foi
    bloqueado neste ambiente; I16 usa a proxy do Censo 2022 e a variável *Campus* (M3, M4) não foi construída.
-   O modelo `M4*` é o M4 sem Campus.
+   `M4*` e `M5*` são M4 e M5 sem Campus; M3 não é estimado.
+   A validade externa com o IBC (Anatel) e a correlação com o ICI-MP também não foram calculadas.
 3. **I04 (backhaul)** não entra (constante).
 4. Agências e postos vêm do cadastro vigente do BCB (não há série histórica por API); agências abertas
    depois de 2024 foram excluídas, mas encerramentos ocorridos depois de 2024 não podem ser revertidos.
 5. A normalização segue o artigo (winsorização P1/P99, min-max, I13 invertido, média aritmética por dimensão,
    média geométrica ponderada com pesos Delphi 25/20/25/15/15). Subíndices iguais a zero são truncados em 1e-6
    na média geométrica (o script informa quantos municípios caem nesse caso).
+6. Pesos Delphi: o rascunho IDF-MP deixa os pesos em aberto; usam-se os da versão IDF-MT (25/20/25/15/15).
+
+## Modelos estimados (`scripts/idf_modelo.py`)
+
+- Índice: Quadro 4 (IDF e subíndices + alfa de Cronbach) e Quadro 5 (Spearman e variação média de posições com
+  pesos iguais, PCA, agregação aritmética e normalização z).
+- Determinantes: MQO com erros HC3, M1 = IDHM + ln(Pop), M2 (+ ln PIB pc), M4* (+ % agro no VA), M5* (+ EF de UF);
+  R² ajustado, AIC, BIC, VIF; diagnósticos do M1 (Breusch-Pagan, RESET, Shapiro-Wilk, Cook > 4/n);
+  M1 por dimensão (D1–D5).
+- Robustez (Quadro 8): probit (efeitos marginais médios), modelo de probabilidade linear (HC3), logit ordenado
+  (razões de chance) com teste de Brant aproximado; M1 com índices alternativos, sem observações influentes e
+  por regressão quantílica na mediana.
+
+## Resultados principais (amostra do artigo, n = 33)
+
+| | |
+|---|---|
+| IDF-MP | média 45,5; DP 14,2; mín. 1,9 (Goianira, com subíndice D2 = 0); máx. 68,3 (Lucas do Rio Verde) |
+| M1 (MQO, HC3) | IDHM = 516,9*** (EP 87,1); ln(Pop) = −1,58 (EP 2,19); R² aj. = 0,607 |
+| Leitura | +0,01 no IDHM ⇒ +5,2 pontos no índice; o porte populacional não é significativo |
+| M5* | IDHM segue significativo (496,6***); efeitos fixos de MS (+10,1**) e MT (+8,3*) em relação a GO |
+| Robustez | IDHM positivo e significativo a 1% em probit (EMM 12,4), MPL (15,8) e logit ordenado (RC 2,33 por +0,01); ln(Pop) não significativo em nenhum |
+| Ranking | Spearman com o Delphi: pesos iguais 0,993; aritmética 0,963; escore z 0,972; PCA 0,801 |
+
+Tabelas completas em `resultados/artigo/` e `resultados/todos/` (`saida_completa.txt` traz todas as saídas).

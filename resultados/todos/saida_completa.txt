@@ -1,0 +1,285 @@
+Amostra 'todos': n = 42 {'GO': 23, 'MT': 13, 'MS': 6}
+Municípios com algum subíndice = 0 (truncado em 1e-6 na média geométrica): 0
+
+Quadro 4 — IDF-MP e subíndices
+                     IDF     D1     D2     D3     D4     D5
+Média             43.782  0.638  0.427  0.378  0.524  0.414
+Desvio-padrão     13.808  0.212  0.251  0.148  0.091  0.206
+Mínimo            17.610  0.161  0.021  0.088  0.288  0.049
+Máximo            67.840  0.912  1.000  0.744  0.644  0.856
+Alfa de Cronbach     NaN  0.539  0.917  0.211 -0.697  0.550
+
+Pesos PCA: {'D1': np.float64(0.016), 'D2': np.float64(0.344), 'D3': np.float64(0.337), 'D4': np.float64(0.252), 'D5': np.float64(0.051)}
+
+Quadro 5 — Robustez do ranking
+                                                  rho_Spearman  variacao_media_posicoes
+Pesos iguais, agregação geométrica                       0.996                    0.762
+Pesos por PCA, agregação geométrica                      0.867                    4.619
+Pesos Delphi, agregação aritmética                       0.959                    2.286
+Normalização por escore z (agregação aritmética)         0.958                    2.143
+
+Quadro 6 — Variáveis explicativas
+                                 mean      std     min      max  corr_IDF
+IDHM (2010)                     0.725    0.027   0.665    0.768     0.828
+População 2024 (mil)          139.603  104.267  50.033  550.925     0.051
+PIB per capita 2021 (R$ mil)   52.082   37.362   9.647  187.182     0.586
+Agropecuária no VA 2021 (%)    17.511   15.835   0.038   60.918     0.350
+
+Quadro 7 — MQO (VD: IDF-MP 0-100), EP robustos HC3; *** p<0,01 ** p<0,05 * p<0,10
+                             M1                  M2                 M4*                 M5*
+Intercept    -254.34*** (35.75)  -259.83*** (30.06)  -256.63*** (33.88)  -250.59*** (35.31)
+idhm_2010     435.94*** (37.33)   287.15*** (58.66)   276.61*** (65.36)   301.13*** (71.21)
+ln_pop             -1.53 (1.70)         1.08 (1.56)         0.48 (2.05)         1.19 (2.12)
+ln_pib_pc                     —      7.81*** (2.86)      8.99*** (3.38)         5.66 (3.96)
+agro_va_pct                   —                   —        -0.06 (0.14)        -0.01 (0.14)
+C(uf)[T.MS]                   —                   —                   —         5.30 (3.85)
+C(uf)[T.MT]                   —                   —                   —         5.06 (3.22)
+R² ajustado               0.674               0.749               0.744               0.756
+AIC                       295.5               285.4               287.1               286.8
+BIC                       300.7               292.4               295.8               298.9
+VIF máximo                 1.03                2.10                4.38                5.70
+N                            42                  42                  42                  42
+
+===== M1 =====
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                    IDF   R-squared:                       0.690
+Model:                            OLS   Adj. R-squared:                  0.674
+Method:                 Least Squares   F-statistic:                     71.22
+Date:                Fri, 13 Nov 2026   Prob (F-statistic):           9.55e-14
+Time:                        17:49:29   Log-Likelihood:                -144.73
+No. Observations:                  42   AIC:                             295.5
+Df Residuals:                      39   BIC:                             300.7
+Df Model:                           2                                         
+Covariance Type:                  HC3                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept   -254.3358     35.747     -7.115      0.000    -324.399    -184.273
+idhm_2010    435.9388     37.328     11.679      0.000     362.778     509.100
+ln_pop        -1.5266      1.698     -0.899      0.369      -4.855       1.802
+==============================================================================
+Omnibus:                        1.375   Durbin-Watson:                   1.652
+Prob(Omnibus):                  0.503   Jarque-Bera (JB):                0.542
+Skew:                          -0.031   Prob(JB):                        0.763
+Kurtosis:                       3.553   Cond. No.                         553.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)
+
+===== M2 =====
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                    IDF   R-squared:                       0.767
+Model:                            OLS   Adj. R-squared:                  0.749
+Method:                 Least Squares   F-statistic:                     53.94
+Date:                Fri, 13 Nov 2026   Prob (F-statistic):           9.15e-14
+Time:                        17:49:29   Log-Likelihood:                -138.71
+No. Observations:                  42   AIC:                             285.4
+Df Residuals:                      38   BIC:                             292.4
+Df Model:                           3                                         
+Covariance Type:                  HC3                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept   -259.8345     30.062     -8.643      0.000    -318.755    -200.914
+idhm_2010    287.1540     58.663      4.895      0.000     172.177     402.131
+ln_pop         1.0806      1.556      0.694      0.487      -1.969       4.130
+ln_pib_pc      7.8058      2.859      2.730      0.006       2.202      13.409
+==============================================================================
+Omnibus:                        2.880   Durbin-Watson:                   2.074
+Prob(Omnibus):                  0.237   Jarque-Bera (JB):                1.940
+Skew:                           0.213   Prob(JB):                        0.379
+Kurtosis:                       3.962   Cond. No.                         919.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)
+
+===== M4* =====
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                    IDF   R-squared:                       0.769
+Model:                            OLS   Adj. R-squared:                  0.744
+Method:                 Least Squares   F-statistic:                     50.42
+Date:                Fri, 13 Nov 2026   Prob (F-statistic):           1.75e-14
+Time:                        17:49:29   Log-Likelihood:                -138.57
+No. Observations:                  42   AIC:                             287.1
+Df Residuals:                      37   BIC:                             295.8
+Df Model:                           4                                         
+Covariance Type:                  HC3                                         
+===============================================================================
+                  coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept    -256.6323     33.877     -7.575      0.000    -323.030    -190.234
+idhm_2010     276.6063     65.359      4.232      0.000     148.506     404.707
+ln_pop          0.4759      2.054      0.232      0.817      -3.550       4.502
+ln_pib_pc       8.9932      3.384      2.658      0.008       2.361      15.626
+agro_va_pct    -0.0647      0.140     -0.461      0.645      -0.340       0.210
+==============================================================================
+Omnibus:                        3.107   Durbin-Watson:                   2.113
+Prob(Omnibus):                  0.211   Jarque-Bera (JB):                2.141
+Skew:                           0.258   Prob(JB):                        0.343
+Kurtosis:                       3.978   Cond. No.                     1.65e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)
+[2] The condition number is large, 1.65e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+===== M5* =====
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                    IDF   R-squared:                       0.792
+Model:                            OLS   Adj. R-squared:                  0.756
+Method:                 Least Squares   F-statistic:                     32.92
+Date:                Fri, 13 Nov 2026   Prob (F-statistic):           5.38e-13
+Time:                        17:49:29   Log-Likelihood:                -136.39
+No. Observations:                  42   AIC:                             286.8
+Df Residuals:                      35   BIC:                             298.9
+Df Model:                           6                                         
+Covariance Type:                  HC3                                         
+===============================================================================
+                  coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept    -250.5937     35.312     -7.097      0.000    -319.803    -181.384
+C(uf)[T.MS]     5.3011      3.848      1.378      0.168      -2.240      12.842
+C(uf)[T.MT]     5.0565      3.224      1.568      0.117      -1.262      11.375
+idhm_2010     301.1258     71.209      4.229      0.000     161.558     440.693
+ln_pop          1.1915      2.124      0.561      0.575      -2.972       5.355
+ln_pib_pc       5.6625      3.960      1.430      0.153      -2.100      13.425
+agro_va_pct    -0.0117      0.137     -0.085      0.932      -0.281       0.257
+==============================================================================
+Omnibus:                        0.617   Durbin-Watson:                   2.181
+Prob(Omnibus):                  0.735   Jarque-Bera (JB):                0.096
+Skew:                           0.001   Prob(JB):                        0.953
+Kurtosis:                       3.235   Cond. No.                     1.72e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)
+[2] The condition number is large, 1.72e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+Diagnósticos M1
+Breusch-Pagan LM (p)    0.8127
+RESET Ramsey F (p)      0.8577
+Shapiro-Wilk W          0.9814
+Shapiro-Wilk (p)        0.7146
+Limiar Cook 4/n         0.0952
+Observações influentes (Cook > 4/n):
+              municipio  uf   cook
+21  Valparaíso de Goiás  GO  0.097
+Leitura M1: +0,01 no IDHM => 4.36 pontos; dobrar a população => -1.06 pontos
+
+Apêndice — M1 por dimensão (subíndice x100), HC3
+                             D1                 D2                  D3                 D4                  D5
+Intercept    -325.65*** (68.34)    -146.23 (90.25)  -174.95*** (47.07)     -42.38 (37.26)  -372.22*** (72.16)
+idhm_2010      172.55** (85.13)  582.26*** (95.31)   389.03*** (60.29)  191.59*** (37.95)   479.01*** (88.87)
+ln_pop          22.70*** (3.67)   -20.00*** (4.61)      -5.93** (2.31)       -3.78 (2.75)         5.71 (4.18)
+R² ajustado               0.486              0.483               0.466              0.293               0.419
+
+Probit: % classificação correta = 78.6
+                          Probit Regression Results                           
+==============================================================================
+Dep. Variable:                   alta   No. Observations:                   42
+Model:                         Probit   Df Residuals:                       39
+Method:                           MLE   Df Model:                            2
+Date:                Fri, 13 Nov 2026   Pseudo R-squ.:                  0.3762
+Time:                        17:49:30   Log-Likelihood:                -18.160
+converged:                       True   LL-Null:                       -29.112
+Covariance Type:                  HC0   LLR p-value:                 1.752e-05
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+const        -31.6887      8.424     -3.762      0.000     -48.199     -15.178
+idhm_2010     46.6541     10.367      4.500      0.000      26.336      66.973
+ln_pop        -0.1852      0.364     -0.509      0.611      -0.898       0.528
+==============================================================================
+
+Logit ordenado
+                             OrderedModel Results                             
+==============================================================================
+Dep. Variable:                faixa_n   Log-Likelihood:                -37.618
+Model:                   OrderedModel   AIC:                             85.24
+Method:            Maximum Likelihood   BIC:                             93.92
+Date:                Fri, 13 Nov 2026                                         
+Time:                        17:49:30                                         
+No. Observations:                  42                                         
+Df Residuals:                      37                                         
+Df Model:                           2                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+idhm_2010    100.9475     20.730      4.870      0.000      60.317     141.578
+ln_pop        -0.2444      0.500     -0.488      0.625      -1.225       0.736
+0/1           68.3588     15.039      4.545      0.000      38.883      97.834
+1/2            0.7739      0.294      2.633      0.008       0.198       1.350
+2/3            0.6992      0.293      2.389      0.017       0.126       1.273
+==============================================================================
+
+Quadro 8 — Robustez com VD discreta (M1)
+                 MQO (índice contínuo) Probit (efeito marginal médio) Probabilidade linear  Logit ordenado (razão de chance)
+idhm_2010            435.94*** (37.33)              11.126*** (0.720)    12.432*** (1.565)  2.744*** (coef 100.95; EP 20.73)
+ln_pop                    -1.53 (1.70)                 -0.044 (0.088)       -0.028 (0.123)       0.783 (coef -0.24; EP 0.50)
+Ajuste                  R² aj. = 0.674              Pseudo-R² = 0.376           R² = 0.421                 Pseudo-R² = 0.353
+Brant aprox. (p)                   NaN                            NaN                  NaN                             0.396
+
+Robustez da regressão (M1)
+                                                                         idhm_2010           ln_pop   N
+MQO, índice: Pesos iguais, agregação geométrica                  435.77*** (36.49)     -1.71 (1.71)  42
+MQO, índice: Pesos por PCA, agregação geométrica                 453.44*** (51.97)  -9.89*** (2.30)  42
+MQO, índice: Pesos Delphi, agregação aritmética                  357.44*** (28.27)      0.48 (1.32)  42
+MQO, índice: Normalização por escore z (agregação aritmética)  1362.99*** (112.90)      0.38 (5.24)  42
+MQO sem influentes (Cook > 4/n)                                  446.23*** (36.73)     -0.88 (1.61)  41
+Regressão quantílica (mediana)                                   488.87*** (56.90)     -1.93 (2.51)  42
+
+Ranking IDF-MP
+cod_ibge                   municipio uf  pop_2024  idhm_2010  pib_pc_2021  agro_va_pct  S_D1  S_D2  S_D3  S_D4  S_D5    IDF       faixa  IDF_esperado_M1  resid_M1
+ 5105259          Lucas do Rio Verde MT   92256.0      0.768    98910.192       31.445 0.730 0.851 0.744 0.596 0.432 67.840        Alta           63.013     4.827
+ 5107958            Tangará da Serra MT  112547.0      0.729    51888.508       29.322 0.748 0.643 0.636 0.559 0.605 64.632        Alta           45.707    18.924
+ 5107909                       Sinop MT  216029.0      0.754    64602.531       12.062 0.862 0.596 0.552 0.584 0.535 62.889        Alta           55.610     7.279
+ 5003702                    Dourados MS  260640.0      0.747    53950.388       10.345 0.896 0.590 0.460 0.496 0.751 62.156        Alta           52.272     9.883
+ 5106224                  Nova Mutum MT   61223.0      0.758   125181.287       46.692 0.559 1.000 0.541 0.582 0.483 61.308        Alta           59.279     2.029
+ 5218805                   Rio Verde GO  238025.0      0.754    65952.471       25.432 0.753 0.552 0.541 0.637 0.438 58.589        Alta           55.462     3.127
+ 5205109                     Catalão GO  120789.0      0.766    87689.471       11.810 0.841 0.533 0.370 0.585 0.784 58.572        Alta           61.729    -3.157
+ 5008305                 Três Lagoas MS  141435.0      0.744    93535.429       12.158 0.787 0.502 0.555 0.497 0.506 57.569        Alta           51.898     5.672
+ 5211503                   Itumbiara GO  112289.0      0.752    49835.856        8.431 0.859 0.487 0.456 0.581 0.509 57.074        Alta           55.738     1.336
+ 5107925                     Sorriso MT  120985.0      0.744   131893.513       37.957 0.784 0.578 0.532 0.608 0.347 57.032        Alta           52.136     4.896
+ 5107602                Rondonópolis MT  259167.0      0.755    72176.326        4.052 0.821 0.533 0.443 0.547 0.518 56.667        Alta           55.769     0.899
+ 5107040          Primavera do Leste MT   92927.0      0.752   109036.493       35.459 0.873 0.586 0.438 0.609 0.371 56.542  Média-alta           56.026     0.515
+ 5100250               Alta Floresta MT   61291.0      0.714    40526.437       16.517 0.554 0.733 0.551 0.602 0.397 56.354  Média-alta           40.096    16.257
+ 5101803             Barra do Garças MT   72694.0      0.748    41797.413       10.850 0.366 0.535 0.506 0.548 0.856 51.656  Média-alta           54.658    -3.002
+ 5201108                    Anápolis GO  415847.0      0.737    44863.323        1.091 0.762 0.443 0.299 0.570 0.649 50.577  Média-alta           47.200     3.377
+ 5208004                     Formosa GO  120478.0      0.744    25839.044        8.595 0.649 0.309 0.487 0.481 0.627 49.527  Média-alta           52.143    -2.616
+ 5204508                Caldas Novas GO  104788.0      0.733    31531.555       11.011 0.734 0.431 0.362 0.531 0.420 48.448  Média-alta           47.560     0.888
+ 5211909                       Jataí GO  110404.0      0.757    77475.097       34.382 0.729 0.368 0.330 0.565 0.523 47.760  Média-alta           57.943   -10.183
+ 5213103                    Mineiros GO   73781.0      0.718    47338.817       34.412 0.575 0.288 0.428 0.609 0.399 44.413  Média-alta           41.557     2.856
+ 5005707                     Naviraí MS   52707.0      0.700    51370.919       25.462 0.384 0.579 0.399 0.547 0.385 44.401  Média-alta           34.223    10.177
+ 5006606                  Ponta Porã MS   97577.0      0.701    50057.700       39.797 0.382 0.520 0.341 0.520 0.611 44.377  Média-alta           33.719    10.658
+ 5108402               Várzea Grande MT  314627.0      0.734    34148.115        0.972 0.817 0.271 0.348 0.480 0.396 43.845 Média-baixa           46.318    -2.473
+ 5208608                   Goianésia GO   77014.0      0.727    26211.951        6.597 0.263 0.550 0.524 0.624 0.320 42.460 Média-baixa           45.415    -2.955
+ 5102637       Campo Novo do Parecis MT   50033.0      0.734   187181.651       60.918 0.352 0.856 0.411 0.576 0.151 41.455 Média-baixa           49.125    -7.670
+ 5213806                   Morrinhos GO   53640.0      0.734    39560.664       30.622 0.379 0.390 0.363 0.584 0.410 40.716 Média-baixa           49.018    -8.302
+ 5206206                  Cristalina GO   65705.0      0.699    74978.268       55.468 0.495 0.749 0.410 0.438 0.102 39.759 Média-baixa           33.451     6.308
+ 5106752            Pontes e Lacerda MT   54795.0      0.703    52837.284       13.280 0.371 0.730 0.416 0.644 0.105 39.299 Média-baixa           35.472     3.827
+ 5210000                     Inhumas GO   53629.0      0.720    26211.257       16.111 0.679 0.374 0.241 0.638 0.229 39.147 Média-baixa           42.916    -3.769
+ 5006200              Nova Andradina MS   50610.0      0.721    58544.963       30.143 0.211 0.640 0.403 0.532 0.342 38.249 Média-baixa           43.440    -5.191
+ 5201405        Aparecida de Goiânia GO  550925.0      0.718    28215.265        0.138 0.903 0.104 0.329 0.614 0.341 37.103 Média-baixa           38.488    -1.384
+ 5221858         Valparaíso de Goiás GO  213506.0      0.746    16873.082        0.038 0.912 0.089 0.241 0.392 0.842 35.745 Média-baixa           52.141   -16.396
+ 5102504                     Cáceres MT   91626.0      0.708    23749.966       14.102 0.161 0.342 0.369 0.472 0.611 33.059       Baixa           36.867    -3.807
+ 5220454              Senador Canedo GO  169849.0      0.701    39240.409        0.569 0.867 0.152 0.167 0.472 0.353 32.343       Baixa           32.873    -0.530
+ 5003207                     Corumbá MS   99107.0      0.700    34145.728       15.560 0.336 0.228 0.265 0.392 0.457 31.405       Baixa           33.259    -1.855
+ 5212501                    Luziânia GO  218872.0      0.701    25161.914       14.083 0.646 0.157 0.255 0.423 0.209 30.595       Baixa           32.486    -1.891
+ 5221403                    Trindade GO  150858.0      0.699    20202.673        2.907 0.661 0.247 0.088 0.556 0.261 27.792       Baixa           32.182    -4.390
+ 5217609                  Planaltina GO  110619.0      0.669    15909.683       11.940 0.621 0.172 0.153 0.379 0.198 26.479       Baixa           19.577     6.902
+ 5215231                   Novo Gama GO  107092.0      0.684     9646.992        0.617 0.776 0.054 0.217 0.332 0.192 23.667       Baixa           26.166    -2.499
+ 5205497            Cidade Ocidental GO   98963.0      0.717    13531.545        6.065 0.798 0.033 0.142 0.288 0.481 21.762       Baixa           40.673   -18.911
+ 5200258       Águas Lindas de Goiás GO  240613.0      0.686    11054.467        0.273 0.833 0.021 0.230 0.351 0.131 19.212       Baixa           25.802    -6.590
+ 5219753 Santo Antônio do Descoberto GO   74614.0      0.665    10742.790        4.650 0.597 0.058 0.186 0.407 0.061 18.753       Baixa           18.435     0.318
+ 5208806                    Goianira GO   78754.0      0.694    23830.006        3.126 0.487 0.060 0.162 0.561 0.049 17.610       Baixa           30.995   -13.385
+
+IDF-MP: média 43.78; DP 13.81; mín 17.61 (Goianira); máx 67.84 (Lucas do Rio Verde)
+Faixas: {'Baixa': 11, 'Média-baixa': 10, 'Média-alta': 10, 'Alta': 11}

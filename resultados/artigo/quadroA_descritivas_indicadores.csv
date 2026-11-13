@@ -1,0 +1,17 @@
+,indicador,mean,std,min,max,CV (%)
+I01,BL fixa/100 dom,68.23,24.49,18.64,112.37,35.89
+I02,4G (% moradores),93.85,4.73,84.65,99.97,5.04
+I03,5G (% moradores),71.83,34.36,0.0,99.87,47.84
+I04,Backhaul fibra,1.0,0.0,1.0,1.0,0.0
+I05,PA financeiro/10 mil hab,1.65,0.49,0.51,2.61,29.64
+I06,PAC cooperativas/10 mil hab,0.63,0.37,0.13,1.8,58.27
+I07,Pix PJ trans./empresa/mês,41.21,8.55,29.61,79.7,20.76
+I08,Empresas recebedoras Pix (%),40.56,3.48,33.78,48.42,8.58
+I09,Crédito/empresa (R$ mil),214.42,104.61,36.39,445.71,48.79
+I10,Empresas ativas/1000 hab,120.97,19.54,81.14,157.67,16.15
+I11,Optantes Simples (%),70.63,3.46,62.98,76.74,4.9
+I12,Taxa de abertura (%),21.26,2.34,17.26,26.68,10.98
+I13,Taxa de encerramento (%),10.23,0.95,8.83,12.24,9.26
+I14,Idade média (anos),6.76,0.93,4.95,8.57,13.7
+I15,25+ com médio completo+ (%),49.77,4.47,40.71,58.92,8.98
+I16,Freq. ensino superior/1000 hab,37.63,11.02,16.32,60.57,29.28

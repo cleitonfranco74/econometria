@@ -1,0 +1,7 @@
+,idhm_2010,ln_pop,N
+"MQO, índice: Pesos iguais, agregação geométrica",435.77*** (36.49),-1.71 (1.71),42
+"MQO, índice: Pesos por PCA, agregação geométrica",453.44*** (51.97),-9.89*** (2.30),42
+"MQO, índice: Pesos Delphi, agregação aritmética",357.44*** (28.27),0.48 (1.32),42
+"MQO, índice: Normalização por escore z (agregação aritmética)",1362.99*** (112.90),0.38 (5.24),42
+MQO sem influentes (Cook > 4/n),446.23*** (36.73),-0.88 (1.61),41
+Regressão quantílica (mediana),488.87*** (56.90),-1.93 (2.51),42

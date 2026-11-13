@@ -1,0 +1,5 @@
+,MQO (índice contínuo),Probit (efeito marginal médio),Probabilidade linear,Logit ordenado (razão de chance)
+idhm_2010,516.89*** (87.09),12.375*** (1.059),15.834*** (2.352),2.327*** (coef 84.46; EP 21.40)
+ln_pop,-1.58 (2.19),0.052 (0.073),0.087 (0.125),0.990 (coef -0.01; EP 0.54)
+Ajuste,R² aj. = 0.607,Pseudo-R² = 0.469,R² = 0.526,Pseudo-R² = 0.246
+Brant aprox. (p),,,,0.882
