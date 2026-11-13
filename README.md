@@ -84,3 +84,11 @@ ln(PIB per capita 2021) e % do VA agropecuário 2021 (SIDRA 5938; 2021 é o últ
 | Ranking | Spearman com o Delphi: pesos iguais 0,993; aritmética 0,963; escore z 0,972; PCA 0,801 |
 
 Tabelas completas em `resultados/artigo/` e `resultados/todos/` (`saida_completa.txt` traz todas as saídas).
+
+## Arquivos para o usuário
+
+- `artigo/Artigo_IDF-MP.docx` e `artigo/Artigo_IDF-MP.pdf` — artigo completo com os resultados.
+- `stata/idf_mp.dta` — base com os 42 municípios (`amostra_artigo == 1` marca os 33 do artigo), 16 indicadores e controles.
+- `stata/idf_mp.do` — reconstrói o índice (winsorização, min-max, subíndices, média geométrica) e roda todas as estimações
+  (MQO HC3 M1–M5, diagnósticos, regressões por dimensão, probit, MPL, logit ordenado, regressão quantílica e robustez do ranking).
+  Rodar a partir da pasta `stata/`.
