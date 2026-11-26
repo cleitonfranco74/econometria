@@ -69,3 +69,11 @@ SINARM/Polícia Federal (dados abertos `REGISTROS_com_categoria`; servidor acess
 públicas idênticas no GitHub: `yurilq/IBMEC_DESENVOLVIMENTO_AGENTE_2026` e `AdrielCout/DadosPorteDeArmasBrasil`, validadas contra
 o Anuário FBSP 2023, correlação de 0,89 por UF); SIM/DATASUS (OpenDataSUS); IBGE/SIDRA (6579, 4714, 5938, 1737);
 IBGE/PAM (Tab. 5457, área de soja); MapBiomas Coleção 11; Fórum Brasileiro de Segurança Pública (Anuários 2022–2023).
+
+## Versão para a Revista de Economia e Agronegócio (REA/UFV)
+`paper/paper_modelo_rea.tex` é a versão condensada (Introdução, Referencial teórico, Metodologia, Resultados e discussão,
+Conclusões), anônima, com referências em ABNT. Para gerar o Word:
+```bash
+cd paper && python gera_paper.py rea && python rea/monta_docx.py
+```
+Saídas: `paper/rea/REA_manuscrito.docx` (sem identificação dos autores, para avaliação cega) e `paper/rea/REA_folha_de_rosto.docx`.

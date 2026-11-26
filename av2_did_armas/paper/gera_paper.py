@@ -15,7 +15,7 @@ df = pd.read_csv(B / 'AV2_painel_municipal_Brasil.csv')
 def n(x, d=2):
     s = f'{abs(x):,.{d}f}' if EN else f'{abs(x):,.{d}f}'.replace(',', 'X').replace('.', '{,}').replace('X', '.')
     if EN: s = s.replace(',', '{,}')
-    return ('$-$' if x < 0 and round(abs(x), d) > 0 else '') + s
+    return (('\u2212' if LANG == 'rea' else '$-$') if x < 0 and round(abs(x), d) > 0 else '') + s
 def st(p): return '$^{***}$' if p < .01 else '$^{**}$' if p < .05 else '$^{*}$' if p < .10 else ''
 def pv(p): return ('$<$0.001' if EN else '$<$0{,}001') if p < .001 else n(p, 3)
 def cs_simple(k):
@@ -159,3 +159,4 @@ for k_, v in V.items(): tex = tex.replace('@@' + k_ + '@@', v)
 left = re.findall(r'@@\w+@@', tex)
 assert not left, left
 open(Path(__file__).with_name(f'paper_{LANG}.tex'), 'w', encoding='utf-8').write(tex); print(f'paper_{LANG}.tex gerado')
+if LANG == 'rea': json.dump({k: v for k, v in V.items() if k.startswith('tab')}, open(Path(__file__).with_name('rea') / 'tabelas_rea.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
