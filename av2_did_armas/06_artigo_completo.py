@@ -121,8 +121,11 @@ BUL('Duggan (2001): ', 'Empregando dados em painel por estado e condado nos Esta
 BUL('Cook e Ludwig (2006): ', 'Usando a fração de suicídios cometidos com arma de fogo como proxy do estoque local de armas, documentaram que a maior prevalência de armas nos domicílios aumenta a taxa de homicídios, confirmando o canal de disponibilidade.')
 BUL('Souza et al. (2007): ', 'Avaliando o Estatuto do Desarmamento e a campanha nacional de entrega voluntária de armas, identificaram reduções na mortalidade e nas internações por arma de fogo nos anos subsequentes à restrição legal.')
 BUL('Cerqueira e Mello (2012): ', 'Explorando a variação espacial na intensidade do desarmamento após 2003 nos municípios paulistas, estimaram que menos armas em circulação reduziram os homicídios por arma de fogo, sem efeito detectável sobre crimes contra a propriedade.')
-BUL('Literatura recente sobre o ciclo 2019–2022: ', 'Relatórios do Fórum Brasileiro de Segurança Pública (FBSP, 2022; 2023) documentaram a expansão sem precedentes dos registros de CACs e de posse de armas, sem, contudo, estimar efeitos causais em nível municipal – lacuna que este trabalho busca preencher.')
-T('Do ponto de vista metodológico, o trabalho incorpora os avanços recentes da literatura de DiD com adoção escalonada e efeitos heterogêneos (Goodman-Bacon, 2021; De Chaisemartin e D’Haultfœuille, 2020; Sun e Abraham, 2021; Callaway e Sant’Anna, 2021), que mostram que o estimador TWFE tradicional pode ser enviesado quando o momento e a intensidade do tratamento variam entre unidades.')
+BUL('Baculi et al. (2021): ', 'Com dados em painel das regiões brasileiras, registros de armas do SINARM e homicídios do SIM/DATASUS, estimados por efeitos fixos e GMM-sistema, encontraram relação direta entre a entrada de armas legais e os homicídios, com exceção do Sul e do Nordeste, onde a relação é inversa.')
+BUL('Wakim (2025): ', 'Empregando Diferenças em Diferenças em um painel dos 27 estados brasileiros entre 1996 e 2022, mostrou que as políticas de controle de armas tiveram efeitos regionalmente divergentes, associadas à redução da violência letal no Sudeste e ao aumento dos homicídios no Nordeste.')
+BUL('Literatura recente sobre o ciclo 2019–2022: ', 'Relatórios do Fórum Brasileiro de Segurança Pública (FBSP, 2022; 2023) documentaram a expansão sem precedentes dos registros de CACs e de posse de armas. Não foram encontrados, porém, estudos que estimem efeitos causais da flexibilização de 2019–2022 em nível municipal – lacuna que este trabalho busca preencher.')
+BUL('Moreno-Louzada e Menezes-Filho (2024): ', 'Explorando a variação municipal na rentabilidade potencial da soja e o momento da liberação da soja geneticamente modificada em um desenho de Diferenças em Diferenças, mostraram que a expansão da soja elevou significativamente as taxas de homicídio nos municípios brasileiros – evidência que motiva a análise da fronteira da soja como grupo tratado neste trabalho.')
+T('Do ponto de vista metodológico, o trabalho incorpora os avanços recentes da literatura de DiD com adoção escalonada e efeitos heterogêneos (Goodman-Bacon, 2021; De Chaisemartin e D’Haultfœuille, 2020; Sun e Abraham, 2021; Callaway e Sant’Anna, 2021), que mostram que o estimador TWFE tradicional pode ser enviesado quando o momento e a intensidade do tratamento variam entre unidades, e o Synthetic Difference-in-Differences (Arkhangelsky et al., 2021). Na avaliação de políticas de armas, Ben-Michael et al. (2024) recomendam justamente combinar DiD com adoção escalonada e controles sintéticos; até onde foi possível verificar, este é o primeiro trabalho a aplicar o SDID às políticas de armas no Brasil.')
 
 # ======================================================================= 4. DADOS
 SEC('4. DADOS')
@@ -338,7 +341,9 @@ SEC('REFERÊNCIAS')
 refs = [
  'ANGRIST, J. D.; PISCHKE, J.-S. Mostly harmless econometrics: an empiricist’s companion. Princeton: Princeton University Press, 2009.',
  'ARKHANGELSKY, D.; ATHEY, S.; HIRSHBERG, D. A.; IMBENS, G. W.; WAGER, S. Synthetic difference-in-differences. American Economic Review, v. 111, n. 12, p. 4088–4118, 2021.',
+ 'BACULI, A. L.; RIBEIRO, M. R.; LEOCÁDIO, A. L. M.; FERREIRA, C. R. Uma nota sobre homicídios e a entrada de armas legais nas regiões brasileiras. Revista Brasileira de Economia, v. 75, n. 1, 2021. Disponível em: https://periodicos.fgv.br/rbe/article/view/80108. Acesso em: 26 nov. 2026.',
  'BECKER, G. S. Crime and punishment: an economic approach. Journal of Political Economy, v. 76, n. 2, p. 169–217, 1968.',
+ 'BEN-MICHAEL, E.; DOUCETTE, M. L.; FELLER, A.; McCOURT, A. D.; STUART, E. A. Statistical methods to estimate the impact of gun policy on gun violence. arXiv, 2404.11506, 2024. Disponível em: https://arxiv.org/abs/2404.11506. Acesso em: 26 nov. 2026.',
  'BRASIL. Decreto nº 9.685, de 15 de janeiro de 2019. Altera o Decreto nº 5.123, de 1º de julho de 2004. Brasília, DF: Presidência da República, 2019.',
  'BRASIL. Decreto nº 11.615, de 21 de julho de 2023. Regulamenta a Lei nº 10.826, de 22 de dezembro de 2003. Brasília, DF: Presidência da República, 2023.',
  'BRASIL. Ministério da Saúde. Sistema de Informações sobre Mortalidade (SIM): microdados Mortalidade Geral 2015–2024. Brasília: OpenDataSUS, 2026. Disponível em: https://dadosabertos.saude.gov.br/dataset/sim. Acesso em: 26 nov. 2026.',
@@ -353,9 +358,11 @@ refs = [
  'GOODMAN-BACON, A. Difference-in-differences with variation in treatment timing. Journal of Econometrics, v. 225, n. 2, p. 254–277, 2021.',
  'IBGE. Sistema IBGE de Recuperação Automática (SIDRA): tabelas 1737, 4714, 5457, 5938 e 6579. Rio de Janeiro: IBGE, 2026. Disponível em: https://sidra.ibge.gov.br. Acesso em: 26 nov. 2026.',
  'LOTT, J. R.; MUSTARD, D. B. Crime, deterrence, and right-to-carry concealed handguns. Journal of Legal Studies, v. 26, n. 1, p. 1–68, 1997.',
+ 'MORENO-LOUZADA, L.; MENEZES-FILHO, N. Technical change in agriculture and homicides: the case of genetically-modified soy seeds in Brazil. Economics Letters, v. 234, 111502, 2024. DOI: 10.1016/j.econlet.2023.111502.',
  'PROJETO MAPBIOMAS. Coleção 11 da série anual de mapas de cobertura e uso da terra do Brasil: desmatamento por município. 2026. Disponível em: https://brasil.mapbiomas.org/estatisticas/. Acesso em: 26 nov. 2026.',
  'SOUZA, M. F. M. et al. Reductions in firearm-related mortality and hospitalizations in Brazil after gun control. Health Affairs, v. 26, n. 2, p. 575–584, 2007.',
- 'SUN, L.; ABRAHAM, S. Estimating dynamic treatment effects in event studies with heterogeneous treatment effects. Journal of Econometrics, v. 225, n. 2, p. 175–199, 2021.']
+ 'SUN, L.; ABRAHAM, S. Estimating dynamic treatment effects in event studies with heterogeneous treatment effects. Journal of Econometrics, v. 225, n. 2, p. 175–199, 2021.',
+ 'WAKIM, V. R. Firearms policy and regional structures: how Brazil responds in divergent ways. Crime, Law and Social Change, v. 83, n. 1, art. 58, 2025. DOI: 10.1007/s10611-025-10247-0.']
 for x in refs: para(x, size=11, align=WD_ALIGN_PARAGRAPH.LEFT, after=4)
 
 # ======================================================================= APÊNDICES
