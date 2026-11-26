@@ -20,7 +20,10 @@
 \onehalfspacing
 
 \title{\textbf{More Guns, More Homicides? Firearm Deregulation in Brazil and Lethal Violence across Municipalities and the Soy Frontier (2015--2024)}}
-\author{Cleiton Franco\thanks{Universidade do Estado de Mato Grosso (UNEMAT), Graduate Program in Intellectual Property and Technology Transfer for Innovation (PROFNIT), Sinop, Brazil. E-mail: [author e-mail].}}
+\author{Ricardo Alves d. Santos\thanks{Universidade do Estado de Mato Grosso (UNEMAT). Corresponding author. E-mail: \href{mailto:ricardo.alves@unemat.br}{ricardo.alves@unemat.br}.}
+\and Cleiton Franco\thanks{Universidade do Estado de Mato Grosso (UNEMAT), Graduate Program in Intellectual Property and Technology Transfer for Innovation (PROFNIT), Sinop, Brazil.}
+\and Wylmor
+\and Lindomar}
 \date{November 2026}
 
 \begin{document}
@@ -61,12 +64,12 @@ Figure~\ref{fig:mensal} shows the monthly response of registrations. Until 2019,
 \centering
 \includegraphics[width=\linewidth]{figs/registros_mensais_en.pdf}
 \caption{Monthly new civilian firearm registrations in Brazil and regulatory milestones}\label{fig:mensal}
-\nota{National sum of SINARM registrations in the ``Citizen'' category by month of issuance, January 2015 to June 2026. Source: author's calculations based on SINARM/Federal Police.}
+\nota{National sum of SINARM registrations in the ``Citizen'' category by month of issuance, January 2015 to June 2026. Source: authors' calculations based on SINARM/Federal Police.}
 \end{figure}
 
 \section{Data}\label{sec:dados}
 
-The panel covers all 5,570 Brazilian municipalities between 2015 and 2024, with 55,700 observations and four pre-policy years. Exposure to treatment comes from SINARM open data maintained by the Federal Police, which record each firearm by year and month of issuance, municipality, and owner category. I use registrations in the ``Citizen'' category, which correspond to civilian-owned guns and are the direct object of the 2019 decrees. Registrations of CACs, kept by the Army in the Military Firearms Management System (SIGMA), are not released at the municipal level. Data come from the Federal Police \citep{sinarm}, the Ministry of Health \citep{sim}, IBGE \citep{ibge}, and the MapBiomas Project \citep{mapbiomas}. Of the 979,601 registrations issued between 2015 and 2025, 99.99\% were matched to an IBGE municipality code. The sum of new registrations between 2018 and 2022 by state has a correlation of 0.89 with the increase in the stock of active registrations published by \citet{fbsp2023}.
+The panel covers all 5,570 Brazilian municipalities between 2015 and 2024, with 55,700 observations and four pre-policy years. Exposure to treatment comes from SINARM open data maintained by the Federal Police, which record each firearm by year and month of issuance, municipality, and owner category. We use registrations in the ``Citizen'' category, which correspond to civilian-owned guns and are the direct object of the 2019 decrees. Registrations of CACs, kept by the Army in the Military Firearms Management System (SIGMA), are not released at the municipal level. Data come from the Federal Police \citep{sinarm}, the Ministry of Health \citep{sim}, IBGE \citep{ibge}, and the MapBiomas Project \citep{mapbiomas}. Of the 979,601 registrations issued between 2015 and 2025, 99.99\% were matched to an IBGE municipality code. The sum of new registrations between 2018 and 2022 by state has a correlation of 0.89 with the increase in the stock of active registrations published by \citet{fbsp2023}.
 
 Treatment intensity is defined as
 \begin{equation}
@@ -111,13 +114,13 @@ Because the decrees applied to the whole country at the same time, identificatio
 \begin{equation}\label{eq:twfe}
 Y_{it} = \alpha_i + \lambda_t + \beta\,(\Delta REG_i \times Post_t) + X_{it}'\gamma + \varepsilon_{it},
 \end{equation}
-where $Y_{it}$ is the firearm homicide rate in municipality $i$ and year $t$, $\alpha_i$ and $\lambda_t$ are municipality and year fixed effects, $Post_t$ indicates years from 2019 onward, and $X_{it}$ collects the controls. The parameter $\beta$ measures the effect of one additional registration per 1,000 inhabitants on the firearm homicide rate. Regressions are weighted by population, and standard errors are clustered by municipality. I also estimate a fixed-effects Poisson model for death counts, with log population as an offset, and versions that add the interactions $\Delta REG_i \times Post_t \times Frontier_i$ and $\Delta REG_i \times Post2023_t$.
+where $Y_{it}$ is the firearm homicide rate in municipality $i$ and year $t$, $\alpha_i$ and $\lambda_t$ are municipality and year fixed effects, $Post_t$ indicates years from 2019 onward, and $X_{it}$ collects the controls. The parameter $\beta$ measures the effect of one additional registration per 1,000 inhabitants on the firearm homicide rate. Regressions are weighted by population, and standard errors are clustered by municipality. We also estimate a fixed-effects Poisson model for death counts, with log population as an offset, and versions that add the interactions $\Delta REG_i \times Post_t \times Frontier_i$ and $\Delta REG_i \times Post2023_t$.
 
-The identifying assumption is that, absent the decrees, municipalities with high and low registration growth would have followed parallel trends in firearm homicides. To assess it, I estimate the event study
+The identifying assumption is that, absent the decrees, municipalities with high and low registration growth would have followed parallel trends in firearm homicides. To assess it, we estimate the event study
 \begin{equation}
 Y_{it} = \alpha_i + \lambda_t + \sum_{t\neq 2018}\delta_t\,(\Delta REG_i\times \mathbf{1}[\text{year}=t]) + X_{it}'\gamma + \varepsilon_{it}.
 \end{equation}
-Because the timing with which each municipality absorbed the shock varied, and the two-way fixed effects estimator can be biased under heterogeneous effects \citep{goodmanbacon2021,dechaisemartin2020,sun2021}, I also use the estimator of \citet{callaway2021}. Cohorts are defined by the first year between 2019 and 2021 in which the municipality's annual registration rate reached at least twice its 2015--2018 average, yielding @@c19@@ municipalities in the 2019 cohort, @@c20@@ in the 2020 cohort, and @@c21@@ in the 2021 cohort, with @@c0@@ never-treated municipalities.
+Because the timing with which each municipality absorbed the shock varied, and the two-way fixed effects estimator can be biased under heterogeneous effects \citep{goodmanbacon2021,dechaisemartin2020,sun2021}, we also use the estimator of \citet{callaway2021}. Cohorts are defined by the first year between 2019 and 2021 in which the municipality's annual registration rate reached at least twice its 2015--2018 average, yielding @@c19@@ municipalities in the 2019 cohort, @@c20@@ in the 2020 cohort, and @@c21@@ in the 2021 cohort, with @@c0@@ never-treated municipalities.
 
 Two additional strategies address the main threats to identification. The triple difference
 \begin{equation}
@@ -249,7 +252,7 @@ The analysis has limitations. The treatment measure covers civilian guns registe
 This paper has shown that the relaxation of firearm access in Brazil between 2019 and 2022 increased firearm homicides in the municipalities most exposed to the shock. Each additional gun registration per 1,000 inhabitants raised the firearm homicide rate by about @@b2@@ deaths per 100,000 per year, and municipalities that experienced a registration surge recorded, on average, @@cs@@ additional deaths per 100,000. The effect is specific to firearm deaths, larger on the soy frontier, and persistent after the 2023 restrictions. From a policy perspective, the results indicate that the expansion of civilian gun ownership carries a measurable and lasting cost in lives, even after regulatory reversal, because the accumulated stock remains in circulation. Releasing CAC registrations at the municipal level and integrating SINARM and SIGMA would allow more complete evaluations.
 
 \section*{Data and code availability}
-All data used in this paper are public. The code used to build the panel and estimate the models is available from the author upon request.
+All data used in this paper are public. The code used to build the panel and estimate the models is available from the corresponding author upon request.
 
 \bibliographystyle{plainnat}
 \bibliography{referencias}
