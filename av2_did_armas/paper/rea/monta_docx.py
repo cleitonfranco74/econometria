@@ -98,8 +98,8 @@ for p in list(doc.paragraphs):
             for r in p.runs: r.font.size = Pt(10)
 # título centralizado e sem recuo nos blocos iniciais
 for p in doc.paragraphs[:12]:
-    if p.text.startswith(('MAIS ARMAS', 'MORE GUNS')): p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    if p.text.startswith(('MAIS ARMAS', 'MORE GUNS', 'Resumo', 'Abstract', 'Palavras', 'Keywords', 'Classificação')): p.paragraph_format.first_line_indent = Cm(0)
+    if p.text.startswith(('ARMAS NO CAMPO', 'GUNS IN THE')): p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    if p.text.startswith(('ARMAS NO CAMPO', 'GUNS IN THE', 'Resumo', 'Abstract', 'Palavras', 'Keywords', 'Classificação')): p.paragraph_format.first_line_indent = Cm(0)
 # referências: sem recuo, espaço simples entre linhas e uma linha em branco entre elas (ABNT)
 inref = False
 for p in doc.paragraphs:
@@ -131,7 +131,7 @@ for el in list(fr.element.body):
 def par(txt, bold=False, center=False):
     p = fr.add_paragraph(); r = p.add_run(txt); r.bold = bold; r.font.name = 'Times New Roman'; r.font.size = Pt(12)
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER if center else WD_ALIGN_PARAGRAPH.LEFT; p.paragraph_format.first_line_indent = Cm(0)
-par('MAIS ARMAS, MAIS HOMICÍDIOS? FLEXIBILIZAÇÃO DO ACESSO A ARMAS E VIOLÊNCIA NA FRONTEIRA DA SOJA', bold=True, center=True)
+par('ARMAS NO CAMPO: FLEXIBILIZAÇÃO DO ACESSO A ARMAS E HOMICÍDIOS NA FRONTEIRA AGRÍCOLA BRASILEIRA', bold=True, center=True)
 par('Folha de rosto — identificação dos autores', center=True)
 for nome, extra in [('Ricardo Alves dos Santos', ' Autor correspondente. E-mail: ricardo.alves@unemat.br'), ('Cleiton Franco', ''),
                     ('Wylmor Dalfovo', ''), ('Lindomar Pegorini', '')]:
