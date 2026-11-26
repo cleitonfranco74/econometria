@@ -55,6 +55,13 @@ es('Divisa: parte amazônica vs. parte de cerrado', f'desmat_prim_ha ~ {ev} | mb
 did('Divisa (Poisson), EF município×bioma e município×ano', 'desmat_prim_ha ~ amz_pos | mb + mt', P, 'amz_pos')
 Ps = P[P.sojicultor_pre == 1]
 did('Divisa, só sojicultores pré-2006', 'desmat_prim_ha ~ amz_pos | mb + mt', Ps, 'amz_pos')
+# mecanismo: soja, pastagem e vegetação natural em cada parte do município (Poisson em hectares)
+for v, lab in [('soja_ha', 'soja'), ('pastagem_ha', 'pastagem'), ('natural_ha', 'vegetação natural')]:
+    did(f'Divisa: área de {lab}', f'{v} ~ amz_pos | mb + mt', P, 'amz_pos')
+    es(f'Divisa: área de {lab}', f'{v} ~ {ev} | mb + mt', P)
+# conversão: participação da pastagem e da soja na área da parte (pontos percentuais, MQO)
+did('Divisa: soja (% da área da parte)', 'soja_pct ~ amz_pos | mb + mt', P, 'amz_pos', pois=False)
+did('Divisa: pastagem (% da área da parte)', 'pastagem_pct ~ amz_pos | mb + mt', P, 'amz_pos', pois=False)
 out['event'] = res
 json.dump(out, open(RS / 'resultados_preliminares.json', 'w'), indent=1, default=float)
 
@@ -77,6 +84,12 @@ for ax, (k, ttl, c) in zip(axs, [('Desmatamento primário: Amazônia vs. Cerrado
     ax.axhline(0, color='#191919', lw=.8); ax.vlines(ys, g(2), g(3), color=c, lw=1.8); ax.plot(ys, g(0), 'o', color=c, ms=4, mec='white', mew=1)
     ax.set_title(ttl, fontsize=10); style(ax)
 axs[0].set_ylabel('Coeficiente Poisson (log), IC 95%\nbase = 2005'); fig.tight_layout(); fig.savefig(RS / 'fig_event_study.png', dpi=200); plt.close()
+fig, axs = plt.subplots(1, 3, figsize=(12, 3.6))
+for ax, (k, ttl, c) in zip(axs, [('Divisa: área de soja', 'Área de soja', OR), ('Divisa: área de pastagem', 'Área de pastagem', BL), ('Divisa: área de vegetação natural', 'Vegetação natural', '#00b894')]):
+    e = res[k]; ys = sorted(list(e) + [2005]); g = lambda i: [0 if y == 2005 else e[y][i] for y in ys]
+    ax.axhline(0, color='#191919', lw=.8); ax.vlines(ys, g(2), g(3), color=c, lw=1.8); ax.plot(ys, g(0), 'o', color=c, ms=4, mec='white', mew=1)
+    ax.set_title(f'Divisa – parte amazônica vs. cerrado:\n{ttl}', fontsize=9.5); style(ax)
+axs[0].set_ylabel('Coeficiente Poisson (log), IC 95%'); fig.tight_layout(); fig.savefig(RS / 'fig_mecanismo_divisa.png', dpi=200); plt.close()
 pd.set_option('display.width', 200)
 print('N:', out['n'], '| divisa:', out['n_divisa'])
 print(pd.DataFrame(out['did']).T.round(4))

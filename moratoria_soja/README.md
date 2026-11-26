@@ -38,33 +38,49 @@ extensões: conversão pastagem → soja (transições do MapBiomas), rebanho bo
 |---|---|---|
 | IBGE/PAM (SIDRA 5457) | soja: área plantada, colhida, produção | 1995–2024 |
 | MapBiomas Col. 11 | desmatamento anual por município **e bioma** (vegetação primária e secundária) | 1987–2025 |
+| MapBiomas Col. 11 | cobertura por município **e bioma**: área total, soja, pastagem, floresta, vegetação natural (`01a_cobertura.py`) | 1985–2025 |
 | IBGE | municípios, área territorial | 2022 |
 
 Painéis gerados em `dados/processados/`:
-- `painel_municipio_ano.csv` — 5.570 municípios × 1995–2024; classificação em Amazônia, Cerrado ou divisa (≥ 5% do desmatamento
-  acumulado em cada bioma); sojicultor pré-moratória = média ≥ 1.000 ha de soja em 2001–2005.
-- `painel_municipio_bioma_ano.csv` — 84 municípios da divisa × 2 partes × 1995–2024.
+- `painel_municipio_ano.csv` — 5.571 municípios × 1995–2024; classificação em Amazônia, Cerrado (≥ 95% da área no bioma) ou divisa
+  (≥ 5% da área em cada); sojicultor pré-moratória = média ≥ 1.000 ha de soja em 2001–2005 (PAM); cobertura do MapBiomas.
+- `painel_municipio_bioma_ano.csv` — 92 municípios da divisa × 2 partes × 1995–2024, com área, soja, pastagem e vegetação
+  natural de cada parte.
+- `cobertura_municipio_bioma_ano.csv` — cobertura do MapBiomas agregada por município, bioma e ano.
 
-**Limitação desta versão**: a composição de biomas do município é aproximada pelo desmatamento acumulado. A versão 2 deve usar a
-tabela de cobertura do MapBiomas por município e bioma (hospedada no Google Drive, não acessível nesta sessão), que também traz a
-área de soja por bioma dentro do município.
+A tabela de cobertura (Google Drive do MapBiomas) não é baixada por `00_baixar_dados.sh`; o link está na página de estatísticas
+do MapBiomas ("Biomas, estados e municípios — cobertura 30m — coleção 11").
 
 ## 5. Resultados preliminares (`02_analise_preliminar.py`)
 
-Municípios sojicultores antes da moratória: 36 na Amazônia, 299 no Cerrado, 30 na divisa.
+Municípios sojicultores antes da moratória: 35 na Amazônia, 292 no Cerrado e 33 na divisa (92 municípios na divisa no total).
 
 | Média anual | Amazônia 2001–05 | Amazônia 2009–13 | Cerrado 2001–05 | Cerrado 2009–13 |
 |---|---|---|---|---|
-| Área de soja (mil ha) | 356 | 1.223 (+244%) | 7.219 | 8.941 (+24%) |
-| Produção (mil t) | 1.030 | 3.823 (+271%) | 18.987 | 26.295 (+38%) |
-| Desmatamento primário (mil ha) | 375 | 69 (**−82%**) | 662 | 415 (−37%) |
+| Área de soja (mil ha) | 484 | 1.474 (+205%) | 7.303 | 9.025 (+24%) |
+| Produção (mil t) | 1.413 | 4.616 (+227%) | 19.173 | 26.614 (+39%) |
+| Desmatamento primário (mil ha) | 359 | 64 (**−82%**) | 643 | 390 (−39%) |
 
 | DiD (Poisson, desmatamento primário) | Coef. | EP | Efeito |
 |---|---|---|---|
-| **(a) Divisa: parte amazônica × pós-2006** | **−0,795** | 0,111 | **−55%** |
-| (a) Divisa, só municípios sojicultores | −0,658 | 0,120 | −48% |
-| (b) Amazônia vs. Cerrado, EF UF × ano | −0,165 | 0,184 | n.s. |
-| (b) Amazônia vs. Cerrado, EF ano | −0,718 | 0,135 | −51% |
+| **(a) Divisa: parte amazônica × pós-2006** | **−0,825** | 0,111 | **−56%** |
+| (a) Divisa, só municípios sojicultores | −0,701 | 0,122 | −50% |
+| (b) Amazônia vs. Cerrado, EF UF × ano | −0,160 | 0,180 | n.s. |
+| (b) Amazônia vs. Cerrado, EF ano | −0,702 | 0,141 | −50% |
+
+**Mecanismo na divisa** (parte amazônica vs. parte de cerrado do mesmo município; Poisson em hectares):
+
+| Resultado | Coef. | EP | Leitura |
+|---|---|---|---|
+| Área de soja | +0,807 | 0,219 | soja continua crescendo na parte amazônica (com pré-tendência: já crescia mais rápido antes de 2005) |
+| Área de pastagem | −0,194 | 0,029 | pastagem encolhe na parte amazônica (queda acelera após 2005) |
+| Vegetação natural | −0,027 | 0,016 | praticamente estável |
+| Pastagem (% da área da parte, MQO) | −2,52 p.p. | 0,55 | |
+
+A combinação — soja em alta, pastagem em queda, desmatamento primário em queda e vegetação natural estável — indica que, na parte
+amazônica, a expansão da soja passou a ocorrer sobre pastagens já abertas (`resultados/fig_mecanismo_divisa.png`). As
+pré-tendências em soja e pastagem impedem ler esses dois coeficientes como efeitos causais; o resultado causal mais limpo continua
+sendo o do desmatamento.
 
 - No desenho da divisa, **nenhum coeficiente pré-2006 é significativo** e a queda é significativa em todos os anos de 2009 a 2020
   (`resultados/fig_event_study.png`).
@@ -84,10 +100,10 @@ desmatamento para soja versus para pastagem como resultado.
 
 ## 7. Próximos passos
 
-1. Obter a tabela de cobertura do MapBiomas por município e bioma (soja e pastagem por bioma) e as transições pastagem → soja.
+1. Transições pastagem → soja por bioma (estatísticas de transição do MapBiomas) e rebanho bovino (PPM) para o deslocamento indireto.
 2. Dados da Trase (compras por *trading* e município) para o desenho (c).
 3. Rebanho bovino (PPM/IBGE) para o deslocamento indireto.
-4. Inferência com poucos clusters no desenho da divisa (84 municípios): *wild cluster bootstrap*.
+4. Inferência com poucos clusters no desenho da divisa (92 municípios): *wild cluster bootstrap*.
 5. Vazamento: testar se municípios do Cerrado próximos à divisa aceleraram desmatamento após 2006.
 
 ## 8. Referências e recursos
