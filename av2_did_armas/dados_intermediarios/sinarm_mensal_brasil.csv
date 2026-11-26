@@ -1,0 +1,602 @@
+ano,mes,categoria,registros
+2010,01,Caçador de Subsistência,705
+2010,01,Cidadão,54041
+2010,01,Servidor Público(Porte por prerrogativa de função),1873
+2010,02,Caçador de Subsistência,516
+2010,02,Cidadão,45384
+2010,02,Servidor Público(Porte por prerrogativa de função),1386
+2010,03,Caçador de Subsistência,469
+2010,03,Cidadão,85211
+2010,03,Servidor Público(Porte por prerrogativa de função),2295
+2010,04,Caçador de Subsistência,390
+2010,04,Cidadão,87586
+2010,04,Servidor Público(Porte por prerrogativa de função),1877
+2010,05,Caçador de Subsistência,424
+2010,05,Cidadão,77883
+2010,05,Servidor Público(Porte por prerrogativa de função),1737
+2010,06,Caçador de Subsistência,266
+2010,06,Cidadão,79376
+2010,06,Servidor Público(Porte por prerrogativa de função),1669
+2010,07,Caçador de Subsistência,209
+2010,07,Cidadão,48602
+2010,07,Servidor Público(Porte por prerrogativa de função),1328
+2010,08,Caçador de Subsistência,325
+2010,08,Cidadão,50821
+2010,08,Servidor Público(Porte por prerrogativa de função),1543
+2010,09,Caçador de Subsistência,163
+2010,09,Cidadão,36359
+2010,09,Servidor Público(Porte por prerrogativa de função),1258
+2010,10,Caçador de Subsistência,176
+2010,10,Cidadão,29411
+2010,10,Servidor Público(Porte por prerrogativa de função),837
+2010,11,Caçador de Subsistência,283
+2010,11,Cidadão,47466
+2010,11,Servidor Público(Porte por prerrogativa de função),883
+2010,12,Caçador de Subsistência,236
+2010,12,Cidadão,28038
+2010,12,Servidor Público(Porte por prerrogativa de função),837
+2011,01,Caçador de Subsistência,185
+2011,01,Cidadão,7772
+2011,01,Servidor Público(Porte por prerrogativa de função),520
+2011,02,Caçador de Subsistência,79
+2011,02,Cidadão,9485
+2011,02,Servidor Público(Porte por prerrogativa de função),623
+2011,03,Caçador de Subsistência,139
+2011,03,Cidadão,11722
+2011,03,Servidor Público(Porte por prerrogativa de função),566
+2011,04,Caçador de Subsistência,91
+2011,04,Cidadão,6452
+2011,04,Servidor Público(Porte por prerrogativa de função),545
+2011,05,Caçador de Subsistência,146
+2011,05,Cidadão,6819
+2011,05,Servidor Público(Porte por prerrogativa de função),620
+2011,06,Caçador de Subsistência,174
+2011,06,Cidadão,6166
+2011,06,Servidor Público(Porte por prerrogativa de função),458
+2011,07,Caçador de Subsistência,241
+2011,07,Cidadão,4554
+2011,07,Servidor Público(Porte por prerrogativa de função),560
+2011,08,Caçador de Subsistência,40
+2011,08,Cidadão,3156
+2011,08,Servidor Público(Porte por prerrogativa de função),590
+2011,09,Caçador de Subsistência,64
+2011,09,Cidadão,3531
+2011,09,Servidor Público(Porte por prerrogativa de função),496
+2011,10,Caçador de Subsistência,70
+2011,10,Cidadão,2746
+2011,10,Servidor Público(Porte por prerrogativa de função),542
+2011,11,Caçador de Subsistência,52
+2011,11,Cidadão,2321
+2011,11,Servidor Público(Porte por prerrogativa de função),524
+2011,12,Caçador de Subsistência,60
+2011,12,Cidadão,2453
+2011,12,Servidor Público(Porte por prerrogativa de função),547
+2012,01,Caçador de Subsistência,103
+2012,01,Cidadão,1854
+2012,01,Servidor Público(Porte por prerrogativa de função),457
+2012,02,Caçador de Subsistência,29
+2012,02,Cidadão,1864
+2012,02,Servidor Público(Porte por prerrogativa de função),421
+2012,03,Caçador de Subsistência,71
+2012,03,Cidadão,2631
+2012,03,Servidor Público(Porte por prerrogativa de função),604
+2012,04,Caçador de Subsistência,99
+2012,04,Cidadão,2113
+2012,04,Servidor Público(Porte por prerrogativa de função),581
+2012,05,Caçador de Subsistência,128
+2012,05,Cidadão,2588
+2012,05,Servidor Público(Porte por prerrogativa de função),692
+2012,06,Caçador de Subsistência,44
+2012,06,Cidadão,2064
+2012,06,Servidor Público(Porte por prerrogativa de função),581
+2012,07,Caçador de Subsistência,59
+2012,07,Cidadão,2454
+2012,07,Servidor Público(Porte por prerrogativa de função),595
+2012,08,Caçador de Subsistência,57
+2012,08,Cidadão,1905
+2012,08,Servidor Público(Porte por prerrogativa de função),406
+2012,09,Caçador de Subsistência,68
+2012,09,Cidadão,1236
+2012,09,Servidor Público(Porte por prerrogativa de função),402
+2012,10,Caçador de Subsistência,33
+2012,10,Cidadão,2369
+2012,10,Servidor Público(Porte por prerrogativa de função),602
+2012,11,Caçador de Subsistência,93
+2012,11,Cidadão,2038
+2012,11,Servidor Público(Porte por prerrogativa de função),545
+2012,12,Caçador de Subsistência,47
+2012,12,Cidadão,2380
+2012,12,Servidor Público(Porte por prerrogativa de função),639
+2013,01,Caçador de Subsistência,89
+2013,01,Cidadão,2348
+2013,01,Servidor Público(Porte por prerrogativa de função),505
+2013,02,Caçador de Subsistência,47
+2013,02,Cidadão,1843
+2013,02,Servidor Público(Porte por prerrogativa de função),423
+2013,03,Caçador de Subsistência,68
+2013,03,Cidadão,2305
+2013,03,Servidor Público(Porte por prerrogativa de função),610
+2013,04,Caçador de Subsistência,103
+2013,04,Cidadão,2591
+2013,04,Servidor Público(Porte por prerrogativa de função),593
+2013,05,Caçador de Subsistência,93
+2013,05,Cidadão,2504
+2013,05,Servidor Público(Porte por prerrogativa de função),615
+2013,06,Caçador de Subsistência,46
+2013,06,Cidadão,2373
+2013,06,Servidor Público(Porte por prerrogativa de função),618
+2013,07,Caçador de Subsistência,77
+2013,07,Cidadão,2750
+2013,07,Servidor Público(Porte por prerrogativa de função),683
+2013,08,Caçador de Subsistência,43
+2013,08,Cidadão,2960
+2013,08,Servidor Público(Porte por prerrogativa de função),605
+2013,09,Caçador de Subsistência,75
+2013,09,Cidadão,2607
+2013,09,Servidor Público(Porte por prerrogativa de função),619
+2013,10,Caçador de Subsistência,68
+2013,10,Cidadão,3235
+2013,10,Servidor Público(Porte por prerrogativa de função),752
+2013,11,Caçador de Subsistência,31
+2013,11,Cidadão,2822
+2013,11,Servidor Público(Porte por prerrogativa de função),682
+2013,12,Caçador de Subsistência,48
+2013,12,Cidadão,2495
+2013,12,Servidor Público(Porte por prerrogativa de função),518
+2014,01,Caçador de Subsistência,28
+2014,01,Cidadão,2659
+2014,01,Servidor Público(Porte por prerrogativa de função),591
+2014,02,Caçador de Subsistência,49
+2014,02,Cidadão,2803
+2014,02,Servidor Público(Porte por prerrogativa de função),683
+2014,03,Caçador de Subsistência,50
+2014,03,Cidadão,2574
+2014,03,Servidor Público(Porte por prerrogativa de função),671
+2014,04,Caçador de Subsistência,63
+2014,04,Cidadão,3219
+2014,04,Servidor Público(Porte por prerrogativa de função),675
+2014,05,Caçador de Subsistência,77
+2014,05,Cidadão,3150
+2014,05,Servidor Público(Porte por prerrogativa de função),669
+2014,06,Caçador de Subsistência,13
+2014,06,Cidadão,2207
+2014,06,Servidor Público(Porte por prerrogativa de função),459
+2014,07,Caçador de Subsistência,47
+2014,07,Cidadão,2904
+2014,07,Servidor Público(Porte por prerrogativa de função),709
+2014,08,Caçador de Subsistência,64
+2014,08,Cidadão,3141
+2014,08,Servidor Público(Porte por prerrogativa de função),710
+2014,09,Caçador de Subsistência,94
+2014,09,Cidadão,4134
+2014,09,Servidor Público(Porte por prerrogativa de função),934
+2014,10,Caçador de Subsistência,53
+2014,10,Cidadão,4195
+2014,10,Servidor Público(Porte por prerrogativa de função),959
+2014,11,Caçador de Subsistência,28
+2014,11,Cidadão,3940
+2014,11,Servidor Público(Porte por prerrogativa de função),951
+2014,12,Caçador de Subsistência,31
+2014,12,Cidadão,3936
+2014,12,Servidor Público(Porte por prerrogativa de função),993
+2015,01,Caçador de Subsistência,90
+2015,01,Cidadão,3205
+2015,01,Servidor Público(Porte por prerrogativa de função),886
+2015,02,Caçador de Subsistência,54
+2015,02,Cidadão,3361
+2015,02,Servidor Público(Porte por prerrogativa de função),744
+2015,03,Caçador de Subsistência,82
+2015,03,Cidadão,4437
+2015,03,Servidor Público(Porte por prerrogativa de função),1381
+2015,04,Caçador de Subsistência,37
+2015,04,Cidadão,4492
+2015,04,Servidor Público(Porte por prerrogativa de função),1503
+2015,05,Caçador de Subsistência,43
+2015,05,Cidadão,4675
+2015,05,Servidor Público(Porte por prerrogativa de função),1446
+2015,06,Caçador de Subsistência,32
+2015,06,Cidadão,4410
+2015,06,Servidor Público(Porte por prerrogativa de função),1114
+2015,07,Caçador de Subsistência,54
+2015,07,Cidadão,6713
+2015,07,Servidor Público(Porte por prerrogativa de função),1777
+2015,08,Caçador de Subsistência,60
+2015,08,Cidadão,6572
+2015,08,Servidor Público(Porte por prerrogativa de função),1492
+2015,09,Caçador de Subsistência,45
+2015,09,Cidadão,5435
+2015,09,Servidor Público(Porte por prerrogativa de função),1453
+2015,10,Caçador de Subsistência,36
+2015,10,Cidadão,5912
+2015,10,Servidor Público(Porte por prerrogativa de função),1441
+2015,11,Caçador de Subsistência,34
+2015,11,Cidadão,6482
+2015,11,Servidor Público(Porte por prerrogativa de função),1334
+2015,12,Caçador de Subsistência,30
+2015,12,Cidadão,7195
+2015,12,Servidor Público(Porte por prerrogativa de função),1515
+2016,01,Caçador de Subsistência,25
+2016,01,Cidadão,4623
+2016,01,Servidor Público(Porte por prerrogativa de função),1121
+2016,02,Caçador de Subsistência,17
+2016,02,Cidadão,4134
+2016,02,Servidor Público(Porte por prerrogativa de função),812
+2016,03,Caçador de Subsistência,35
+2016,03,Cidadão,4951
+2016,03,Servidor Público(Porte por prerrogativa de função),1133
+2016,04,Caçador de Subsistência,37
+2016,04,Cidadão,5241
+2016,04,Servidor Público(Porte por prerrogativa de função),1004
+2016,05,Caçador de Subsistência,35
+2016,05,Cidadão,6096
+2016,05,Servidor Público(Porte por prerrogativa de função),1144
+2016,06,Caçador de Subsistência,24
+2016,06,Cidadão,5215
+2016,06,Servidor Público(Porte por prerrogativa de função),1060
+2016,07,Caçador de Subsistência,31
+2016,07,Cidadão,5175
+2016,07,Servidor Público(Porte por prerrogativa de função),988
+2016,08,Caçador de Subsistência,20
+2016,08,Cidadão,7208
+2016,08,Servidor Público(Porte por prerrogativa de função),1194
+2016,09,Caçador de Subsistência,28
+2016,09,Cidadão,5146
+2016,09,Servidor Público(Porte por prerrogativa de função),886
+2016,10,Caçador de Subsistência,25
+2016,10,Cidadão,5297
+2016,10,Servidor Público(Porte por prerrogativa de função),922
+2016,11,Caçador de Subsistência,23
+2016,11,Cidadão,5220
+2016,11,Servidor Público(Porte por prerrogativa de função),875
+2016,12,Caçador de Subsistência,26
+2016,12,Cidadão,5391
+2016,12,Servidor Público(Porte por prerrogativa de função),825
+2017,01,Caçador de Subsistência,21
+2017,01,Cidadão,5038
+2017,01,Servidor Público(Porte por prerrogativa de função),818
+2017,02,Caçador de Subsistência,27
+2017,02,Cidadão,3540
+2017,02,Servidor Público(Porte por prerrogativa de função),611
+2017,03,Caçador de Subsistência,58
+2017,03,Cidadão,6298
+2017,03,Servidor Público(Porte por prerrogativa de função),1004
+2017,04,Caçador de Subsistência,28
+2017,04,Cidadão,4962
+2017,04,Servidor Público(Porte por prerrogativa de função),745
+2017,05,Caçador de Subsistência,15
+2017,05,Cidadão,6412
+2017,05,Servidor Público(Porte por prerrogativa de função),1127
+2017,06,Caçador de Subsistência,20
+2017,06,Cidadão,5789
+2017,06,Servidor Público(Porte por prerrogativa de função),1007
+2017,07,Caçador de Subsistência,17
+2017,07,Cidadão,5771
+2017,07,Servidor Público(Porte por prerrogativa de função),1056
+2017,08,Caçador de Subsistência,64
+2017,08,Cidadão,7517
+2017,08,Servidor Público(Porte por prerrogativa de função),1377
+2017,09,Caçador de Subsistência,20
+2017,09,Cidadão,6619
+2017,09,Servidor Público(Porte por prerrogativa de função),1226
+2017,10,Caçador de Subsistência,29
+2017,10,Cidadão,6852
+2017,10,Servidor Público(Porte por prerrogativa de função),1314
+2017,11,Caçador de Subsistência,20
+2017,11,Cidadão,7274
+2017,11,Servidor Público(Porte por prerrogativa de função),1188
+2017,12,Caçador de Subsistência,25
+2017,12,Cidadão,6395
+2017,12,Servidor Público(Porte por prerrogativa de função),1295
+2018,01,Caçador de Subsistência,24
+2018,01,Cidadão,6194
+2018,01,Servidor Público(Porte por prerrogativa de função),1261
+2018,02,Caçador de Subsistência,21
+2018,02,Cidadão,4621
+2018,02,Servidor Público(Porte por prerrogativa de função),1013
+2018,03,Caçador de Subsistência,22
+2018,03,Cidadão,5553
+2018,03,Servidor Público(Porte por prerrogativa de função),1173
+2018,04,Caçador de Subsistência,43
+2018,04,Cidadão,6491
+2018,04,Servidor Público(Porte por prerrogativa de função),1259
+2018,05,Caçador de Subsistência,20
+2018,05,Cidadão,6874
+2018,05,Servidor Público(Porte por prerrogativa de função),1336
+2018,06,Caçador de Subsistência,43
+2018,06,Cidadão,6038
+2018,06,Servidor Público(Porte por prerrogativa de função),1032
+2018,07,Caçador de Subsistência,39
+2018,07,Cidadão,6046
+2018,07,Servidor Público(Porte por prerrogativa de função),1043
+2018,08,Caçador de Subsistência,28
+2018,08,Cidadão,6500
+2018,08,Servidor Público(Porte por prerrogativa de função),1390
+2018,09,Caçador de Subsistência,31
+2018,09,Cidadão,4139
+2018,09,Servidor Público(Porte por prerrogativa de função),811
+2018,10,Caçador de Subsistência,44
+2018,10,Cidadão,9558
+2018,10,Servidor Público(Porte por prerrogativa de função),1620
+2018,11,Caçador de Subsistência,38
+2018,11,Cidadão,6969
+2018,11,Servidor Público(Porte por prerrogativa de função),1152
+2018,12,Caçador de Subsistência,22
+2018,12,Cidadão,5600
+2018,12,Servidor Público(Porte por prerrogativa de função),913
+2019,01,Caçador de Subsistência,22
+2019,01,Cidadão,6365
+2019,01,Servidor Público(Porte por prerrogativa de função),986
+2019,02,Caçador de Subsistência,23
+2019,02,Cidadão,5910
+2019,02,Servidor Público(Porte por prerrogativa de função),914
+2019,03,Caçador de Subsistência,19
+2019,03,Cidadão,8204
+2019,03,Servidor Público(Porte por prerrogativa de função),1003
+2019,04,Caçador de Subsistência,35
+2019,04,Cidadão,6725
+2019,04,Servidor Público(Porte por prerrogativa de função),809
+2019,05,Caçador de Subsistência,7
+2019,05,Cidadão,3544
+2019,05,Servidor Público(Porte por prerrogativa de função),676
+2019,06,Caçador de Subsistência,20
+2019,06,Cidadão,4741
+2019,06,Servidor Público(Porte por prerrogativa de função),699
+2019,07,Caçador de Subsistência,36
+2019,07,Cidadão,6856
+2019,07,Servidor Público(Porte por prerrogativa de função),987
+2019,08,Caçador de Subsistência,18
+2019,08,Cidadão,6849
+2019,08,Servidor Público(Porte por prerrogativa de função),990
+2019,09,Caçador de Subsistência,8
+2019,09,Cidadão,5895
+2019,09,Servidor Público(Porte por prerrogativa de função),1092
+2019,10,Caçador de Subsistência,23
+2019,10,Cidadão,6424
+2019,10,Servidor Público(Porte por prerrogativa de função),1656
+2019,11,Caçador de Subsistência,10
+2019,11,Cidadão,6283
+2019,11,Servidor Público(Porte por prerrogativa de função),1568
+2019,12,Caçador de Subsistência,21
+2019,12,Cidadão,7262
+2019,12,Servidor Público(Porte por prerrogativa de função),1792
+2020,01,Caçador de Subsistência,38
+2020,01,Cidadão,7546
+2020,01,Servidor Público(Porte por prerrogativa de função),1758
+2020,02,Caçador de Subsistência,32
+2020,02,Cidadão,7411
+2020,02,Servidor Público(Porte por prerrogativa de função),1712
+2020,03,Caçador de Subsistência,15
+2020,03,Cidadão,8304
+2020,03,Servidor Público(Porte por prerrogativa de função),1718
+2020,04,Caçador de Subsistência,10
+2020,04,Cidadão,7426
+2020,04,Servidor Público(Porte por prerrogativa de função),1237
+2020,05,Caçador de Subsistência,16
+2020,05,Cidadão,8340
+2020,05,Servidor Público(Porte por prerrogativa de função),1519
+2020,06,Caçador de Subsistência,25
+2020,06,Cidadão,10325
+2020,06,Servidor Público(Porte por prerrogativa de função),2144
+2020,07,Caçador de Subsistência,48
+2020,07,Cidadão,13062
+2020,07,Servidor Público(Porte por prerrogativa de função),2365
+2020,08,Caçador de Subsistência,32
+2020,08,Cidadão,13688
+2020,08,Segurança de Dignitários,1
+2020,08,Servidor Público(Porte por prerrogativa de função),2356
+2020,09,Caçador de Subsistência,27
+2020,09,Cidadão,13578
+2020,09,Servidor Público(Porte por prerrogativa de função),2115
+2020,10,Caçador de Subsistência,25
+2020,10,Cidadão,13276
+2020,10,Servidor Público(Porte por prerrogativa de função),2127
+2020,11,Caçador de Subsistência,57
+2020,11,Cidadão,14637
+2020,11,Servidor Público(Porte por prerrogativa de função),2241
+2020,12,Caçador de Subsistência,12
+2020,12,Cidadão,13417
+2020,12,Servidor Público(Porte por prerrogativa de função),2064
+2021,01,Caçador de Subsistência,40
+2021,01,Cidadão,11638
+2021,01,Servidor Público(Porte por prerrogativa de função),1755
+2021,02,Caçador de Subsistência,43
+2021,02,Cidadão,11595
+2021,02,Servidor Público(Porte por prerrogativa de função),1648
+2021,03,Caçador de Subsistência,32
+2021,03,Cidadão,15146
+2021,03,Servidor Público(Porte por prerrogativa de função),1952
+2021,04,Caçador de Subsistência,20
+2021,04,Cidadão,13632
+2021,04,Servidor Público(Porte por prerrogativa de função),1593
+2021,05,Caçador de Subsistência,40
+2021,05,Cidadão,14670
+2021,05,Servidor Público(Porte por prerrogativa de função),1531
+2021,06,Caçador de Subsistência,36
+2021,06,Cidadão,15095
+2021,06,Servidor Público(Porte por prerrogativa de função),1663
+2021,07,Caçador de Subsistência,49
+2021,07,Cidadão,14875
+2021,07,Servidor Público(Porte por prerrogativa de função),1737
+2021,08,Caçador de Subsistência,45
+2021,08,Cidadão,16008
+2021,08,Servidor Público(Porte por prerrogativa de função),2062
+2021,09,Caçador de Subsistência,37
+2021,09,Cidadão,14597
+2021,09,Servidor Público(Porte por prerrogativa de função),1727
+2021,10,Caçador de Subsistência,50
+2021,10,Cidadão,14095
+2021,10,Servidor Público(Porte por prerrogativa de função),1509
+2021,11,Caçador de Subsistência,35
+2021,11,Cidadão,12272
+2021,11,Servidor Público(Porte por prerrogativa de função),1371
+2021,12,Caçador de Subsistência,17
+2021,12,Cidadão,11576
+2021,12,Servidor Público(Porte por prerrogativa de função),1318
+2022,01,Caçador de Subsistência,29
+2022,01,Cidadão,9408
+2022,01,Servidor Público(Porte por prerrogativa de função),1053
+2022,02,Caçador de Subsistência,22
+2022,02,Cidadão,9329
+2022,02,Servidor Público(Porte por prerrogativa de função),1138
+2022,03,Caçador de Subsistência,36
+2022,03,Cidadão,11926
+2022,03,Segurança de Dignitários,1
+2022,03,Servidor Público(Porte por prerrogativa de função),1711
+2022,04,Caçador de Subsistência,26
+2022,04,Cidadão,10234
+2022,04,Servidor Público(Porte por prerrogativa de função),1533
+2022,05,Caçador de Subsistência,58
+2022,05,Cidadão,12531
+2022,05,Servidor Público(Porte por prerrogativa de função),1804
+2022,06,Caçador de Subsistência,73
+2022,06,Cidadão,11937
+2022,06,Servidor Público(Porte por prerrogativa de função),1770
+2022,07,Caçador de Subsistência,63
+2022,07,Cidadão,12941
+2022,07,Servidor Público(Porte por prerrogativa de função),2375
+2022,08,Caçador de Subsistência,51
+2022,08,Cidadão,14170
+2022,08,Servidor Público(Porte por prerrogativa de função),2051
+2022,09,Caçador de Subsistência,43
+2022,09,Cidadão,9460
+2022,09,Segurança de Dignitários,1
+2022,09,Servidor Público(Porte por prerrogativa de função),1685
+2022,10,Caçador de Subsistência,26
+2022,10,Cidadão,5013
+2022,10,Servidor Público(Porte por prerrogativa de função),1755
+2022,11,Caçador de Subsistência,49
+2022,11,Cidadão,3554
+2022,11,Segurança de Dignitários,1
+2022,11,Servidor Público(Porte por prerrogativa de função),1925
+2022,12,Caçador de Subsistência,10
+2022,12,Cidadão,3552
+2022,12,Servidor Público(Porte por prerrogativa de função),2004
+2023,01,Caçador de Subsistência,39
+2023,01,Cidadão,2479
+2023,01,Servidor Público(Porte por prerrogativa de função),1254
+2023,02,Caçador de Subsistência,13
+2023,02,Cidadão,1772
+2023,02,Servidor Público(Porte por prerrogativa de função),886
+2023,03,Caçador de Subsistência,14
+2023,03,Cidadão,2176
+2023,03,Servidor Público(Porte por prerrogativa de função),983
+2023,04,Caçador de Subsistência,1
+2023,04,Cidadão,316
+2023,04,Servidor Público(Porte por prerrogativa de função),197
+2023,05,Caçador de Subsistência,21
+2023,05,Cidadão,2334
+2023,05,Servidor Público(Porte por prerrogativa de função),945
+2023,06,Caçador de Subsistência,10
+2023,06,Cidadão,2365
+2023,06,Servidor Público(Porte por prerrogativa de função),1026
+2023,07,Caçador de Subsistência,29
+2023,07,Cidadão,2304
+2023,07,Servidor Público(Porte por prerrogativa de função),1004
+2023,08,Caçador de Subsistência,9
+2023,08,Cidadão,1259
+2023,08,Servidor Público(Porte por prerrogativa de função),324
+2023,09,Caçador de Subsistência,17
+2023,09,Cidadão,1188
+2023,09,Servidor Público(Porte por prerrogativa de função),167
+2023,10,Caçador de Subsistência,36
+2023,10,Cidadão,1485
+2023,10,Servidor Público(Porte por prerrogativa de função),161
+2023,11,Caçador de Subsistência,16
+2023,11,Cidadão,1579
+2023,11,Servidor Público(Porte por prerrogativa de função),149
+2023,12,Caçador de Subsistência,17
+2023,12,Cidadão,1596
+2023,12,Servidor Público(Porte por prerrogativa de função),190
+2024,01,Caçador de Subsistência,25
+2024,01,Cidadão,1613
+2024,01,Servidor Público(Porte por prerrogativa de função),187
+2024,02,Caçador de Subsistência,7
+2024,02,Cidadão,1744
+2024,02,Servidor Público(Porte por prerrogativa de função),200
+2024,03,Caçador de Subsistência,13
+2024,03,Cidadão,1890
+2024,03,Servidor Público(Porte por prerrogativa de função),226
+2024,04,Caçador de Subsistência,16
+2024,04,Cidadão,1740
+2024,04,Servidor Público(Porte por prerrogativa de função),241
+2024,05,Caçador de Subsistência,25
+2024,05,Cidadão,1343
+2024,05,Servidor Público(Porte por prerrogativa de função),190
+2024,06,Caçador de Subsistência,6
+2024,06,Cidadão,1610
+2024,06,Servidor Público(Porte por prerrogativa de função),266
+2024,07,Caçador de Subsistência,16
+2024,07,Cidadão,1781
+2024,07,Servidor Público(Porte por prerrogativa de função),258
+2024,08,Caçador de Subsistência,27
+2024,08,Cidadão,1645
+2024,08,Servidor Público(Porte por prerrogativa de função),314
+2024,09,Caçador de Subsistência,6
+2024,09,Cidadão,1775
+2024,09,Servidor Público(Porte por prerrogativa de função),528
+2024,10,Caçador de Subsistência,59
+2024,10,Cidadão,2370
+2024,10,Servidor Público(Porte por prerrogativa de função),655
+2024,11,Caçador de Subsistência,26
+2024,11,Cidadão,1677
+2024,11,Servidor Público(Porte por prerrogativa de função),570
+2024,12,Caçador de Subsistência,25
+2024,12,Cidadão,1486
+2024,12,Servidor Público(Porte por prerrogativa de função),347
+2025,01,Caçador de Subsistência,19
+2025,01,Cidadão,1521
+2025,01,Servidor Público(Porte por prerrogativa de função),398
+2025,02,Caçador de Subsistência,3
+2025,02,Cidadão,1752
+2025,02,Servidor Público(Porte por prerrogativa de função),516
+2025,03,Caçador de Subsistência,36
+2025,03,Cidadão,1678
+2025,03,Servidor Público(Porte por prerrogativa de função),677
+2025,04,Caçador de Subsistência,25
+2025,04,Cidadão,1615
+2025,04,Servidor Público(Porte por prerrogativa de função),771
+2025,05,Caçador de Subsistência,22
+2025,05,Cidadão,1598
+2025,05,Servidor Público(Porte por prerrogativa de função),893
+2025,06,Caçador de Subsistência,27
+2025,06,Cidadão,1736
+2025,06,Servidor Público(Porte por prerrogativa de função),982
+2025,07,Caçador de Subsistência,28
+2025,07,Cidadão,2015
+2025,07,Servidor Público(Porte por prerrogativa de função),1185
+2025,08,Caçador de Subsistência,14
+2025,08,Cidadão,2047
+2025,08,Servidor Público(Porte por prerrogativa de função),1143
+2025,09,Caçador de Subsistência,46
+2025,09,Cidadão,1825
+2025,09,Servidor Público(Porte por prerrogativa de função),1061
+2025,10,Caçador de Subsistência,31
+2025,10,Cidadão,1829
+2025,10,Servidor Público(Porte por prerrogativa de função),1036
+2025,11,Caçador de Subsistência,21
+2025,11,Cidadão,1668
+2025,11,Servidor Público(Porte por prerrogativa de função),1117
+2025,12,Caçador de Subsistência,24
+2025,12,Cidadão,1733
+2025,12,Servidor Público(Porte por prerrogativa de função),1109
+2026,01,Caçador de Subsistência,4
+2026,01,Cidadão,1633
+2026,01,Servidor Público(Porte por prerrogativa de função),872
+2026,02,Caçador de Subsistência,9
+2026,02,Cidadão,1564
+2026,02,Servidor Público(Porte por prerrogativa de função),819
+2026,03,Caçador de Subsistência,14
+2026,03,Cidadão,1926
+2026,03,Servidor Público(Porte por prerrogativa de função),999
+2026,04,Caçador de Subsistência,4
+2026,04,Cidadão,1765
+2026,04,Servidor Público(Porte por prerrogativa de função),805
+2026,05,Caçador de Subsistência,10
+2026,05,Cidadão,2081
+2026,05,Servidor Público(Porte por prerrogativa de função),847
+2026,06,Caçador de Subsistência,4
+2026,06,Cidadão,2056
+2026,06,Servidor Público(Porte por prerrogativa de função),975
+2026,07,Caçador de Subsistência,1
+2026,07,Cidadão,623
+2026,07,Servidor Público(Porte por prerrogativa de função),330

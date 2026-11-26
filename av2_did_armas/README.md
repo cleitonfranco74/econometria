@@ -19,6 +19,17 @@ substitui a base simulada da proposta original por dados municipais reais de tod
 | DDD arma de fogo vs. arma branca | +0,19 | 0,03 |
 | Interação com fronteira agrícola | −0,10 | 0,47 |
 
+**SDID (Arkhangelsky et al., 2021) e fronteira da soja** (`08_sdid.py`, `09_fronteira_soja.py`):
+| Comparação | SDID | EP |
+|---|---|---|
+| Coorte 2019 vs. nunca tratados (≥ 20 mil hab.) | +3,32 | 0,76 |
+| Quartil superior vs. inferior de registros (≥ 20 mil hab.) | −0,16 | 0,89 |
+| Fronteira da soja vs. soja consolidada | +1,63 | 0,52 |
+| Fronteira da soja vs. sem soja | +2,33 | 0,47 |
+
+O SDID confirma o efeito quando os grupos são semelhantes, mas não na comparação bruta entre quartis extremos;
+com os tratados ponderados pela população os efeitos do SDID perdem significância.
+
 Ressalvas: o teste conjunto de pré-tendências do event study TWFE dá p = 0,04, e o placebo de trânsito é positivo no TWFE
 (mas nulo no C&S). Ver Seções 7–8 do artigo.
 
@@ -41,6 +52,9 @@ python 01_painel_municipal.py dados_intermediarios AV2_painel_municipal_Brasil.c
 python 02_estima_municipal.py AV2_painel_municipal_Brasil.csv resultados_municipal.json
 python 03_callaway_santanna.py AV2_painel_municipal_Brasil.csv cs_resultados.json
 python 04_figuras.py
+python 08_sdid.py AV2_painel_municipal_Brasil.csv resultados_sdid.json
+python 09_fronteira_soja.py AV2_painel_municipal_Brasil.csv dados_intermediarios/soja_pam.json resultados_soja.json
+python 10_figuras_sdid_mensal.py   # usa dados_intermediarios/sinarm_mensal_brasil.csv
 python 06_artigo_completo.py proposta_original/AV2_PROFNIT_Projeto_DiD.docx AV2_PROFNIT_Artigo_Revisado_Dados_Municipais.docx
 ```
 `fronteira_tratamento.json` vem da especificação com a fronteira como grupo tratado, descrita na Seção 6 do artigo.
@@ -49,4 +63,4 @@ python 06_artigo_completo.py proposta_original/AV2_PROFNIT_Projeto_DiD.docx AV2_
 SINARM/Polícia Federal (dados abertos `REGISTROS_com_categoria`; servidor acessível só do Brasil, por isso foram usadas cópias
 públicas idênticas no GitHub: `yurilq/IBMEC_DESENVOLVIMENTO_AGENTE_2026` e `AdrielCout/DadosPorteDeArmasBrasil`, validadas contra
 o Anuário FBSP 2023, correlação de 0,89 por UF); SIM/DATASUS (OpenDataSUS); IBGE/SIDRA (6579, 4714, 5938, 1737);
-MapBiomas Coleção 11; Fórum Brasileiro de Segurança Pública (Anuários 2022–2023).
+IBGE/PAM (Tab. 5457, área de soja); MapBiomas Coleção 11; Fórum Brasileiro de Segurança Pública (Anuários 2022–2023).
