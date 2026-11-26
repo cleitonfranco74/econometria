@@ -54,11 +54,21 @@ vab = pd.concat(vs)
 # ---------- MapBiomas: desmatamento 2015-2018 (ha) -> % da área
 wb = openpyxl.load_workbook(f'{S}/mb_def.xlsx', read_only=True); ws = wb['ANNUAL_DEFORESTATION']
 rows = ws.iter_rows(values_only=True); h = next(rows); ix = {k: i for i, k in enumerate(h)}
-acc = {}
+acc, accp, biom, anual = {}, {}, {}, {}
+anos_all = [int(k[1:]) for k in h if isinstance(k, str) and k.startswith('y') and k[1:].isdigit()]
 for r in rows:
     if r[ix['GEOCODE']] is None: continue
-    gcode = int(r[ix['GEOCODE']]); acc[gcode] = acc.get(gcode, 0) + sum((r[ix[f'y{y}']] or 0) for y in (2015, 2016, 2017, 2018))
+    gcode = int(r[ix['GEOCODE']]); prim = 'Primária' in str(r[ix['TRANSITION_CLASS_NAME']])
+    v1518 = sum((r[ix[f'y{y}']] or 0) for y in (2015, 2016, 2017, 2018))
+    acc[gcode] = acc.get(gcode, 0) + v1518
+    if prim: accp[gcode] = accp.get(gcode, 0) + v1518
+    k = (gcode, r[ix['BIOME']]); biom[k] = biom.get(k, 0) + sum((r[ix[f'y{y}']] or 0) for y in anos_all)   # bioma com mais desmatamento acumulado
+    for y in range(2015, 2025):
+        a = anual.setdefault((gcode, y), [0.0, 0.0]); v = r[ix[f'y{y}']] or 0; a[0] += v; a[1] += v if prim else 0
 mb = pd.Series(acc, name='desmat_ha_2015_2018')
+mbp = pd.Series(accp, name='desmat_prim_ha_2015_2018')
+bioma = pd.Series(biom).rename_axis(['cod_ibge', 'bioma']).rename('ha').reset_index().sort_values('ha').drop_duplicates('cod_ibge', keep='last').set_index('cod_ibge').bioma
+anual = pd.DataFrame([(k[0], k[1], v[0], v[1]) for k, v in anual.items()], columns=['cod_ibge', 'ano', 'desmat_ha', 'desmat_prim_ha'])
 # ---------- SIM
 sim = pd.read_csv(f'{S}/sim/sim_mun.csv', dtype={'mun6': str})
 # ---------- Painel
@@ -68,6 +78,8 @@ df['mun6'] = df.cod_ibge.astype(str).str[:6]
 df = df.merge(sim, on=['mun6', 'ano'], how='left').merge(reg, on=['cod_ibge', 'ano'], how='left').merge(vab, on=['cod_ibge', 'ano'], how='left')
 for v in ['af', 'ab', 'outros', 'transito', 'covid', 'reg_cidadao', 'reg_cacador_subs', 'reg_servidor']: df[v] = df[v].fillna(0)
 df = df.merge(area, left_on='cod_ibge', right_index=True, how='left').merge(mb, left_on='cod_ibge', right_index=True, how='left')
+df = df.merge(anual, on=['cod_ibge', 'ano'], how='left').fillna({'desmat_ha': 0, 'desmat_prim_ha': 0})
+df['desmat_pct'] = df.desmat_ha / (df.area_km2 * 100) * 100; df['desmat_prim_pct'] = df.desmat_prim_ha / (df.area_km2 * 100) * 100   # % da área no ano
 df = df.sort_values(['cod_ibge', 'ano'])
 df['vab_agro_imputado'] = df.vab_agro.isna().astype(int); df['vab_agro'] = df.groupby('cod_ibge').vab_agro.ffill()
 df['log_vab_agro_pc'] = np.log((df.vab_agro * df.ano.clip(upper=2023).map(defl)).clip(lower=1) / df['pop'])
@@ -94,18 +106,23 @@ for y in (2021, 2020, 2019):
 t['ano_primeiro_salto'] = coh
 dm = mb.reindex(t.index) / (area.reindex(t.index) * 100) * 100             # % da área desmatada 2015-18
 t['taxa_desmat_2015_2018'] = dm.fillna(0)
-t['fronteira_ativa'] = (t.taxa_desmat_2015_2018 > t.taxa_desmat_2015_2018.median()).astype(int)
+t['fronteira_ativa_nacional'] = (t.taxa_desmat_2015_2018 > t.taxa_desmat_2015_2018.median()).astype(int)   # definição anterior (mediana nacional, perda total)
+t['taxa_desmat_prim_2015_2018'] = (mbp.reindex(t.index) / (area.reindex(t.index) * 100) * 100).fillna(0)
+t['bioma'] = bioma.reindex(t.index).fillna('Sem desmatamento')
+# Fronteira agrícola ativa: perda de vegetação PRIMÁRIA 2015-18 (% da área) acima da mediana do PRÓPRIO bioma
+t['fronteira_ativa'] = (t.taxa_desmat_prim_2015_2018 > t.groupby('bioma').taxa_desmat_prim_2015_2018.transform('median')).astype(int)
 amz = ['AC', 'AM', 'AP', 'PA', 'RO', 'RR', 'TO', 'MT', 'MA']
 df = df.merge(t, left_on='cod_ibge', right_index=True)
 df['amazonia_legal_uf'] = df.uf.isin(amz).astype(int)
 orig = pd.read_csv(f'{S}/muns.csv'); df['amostra_projeto_50'] = df.cod_ibge.isin(orig.cod_ibge).astype(int)
 df = df.dropna(subset=['pop'])
-keep = ['cod_ibge','municipio','uf','ano','pos_2019','pos_2023','amostra_projeto_50','amazonia_legal_uf','fronteira_ativa','taxa_desmat_2015_2018',
+keep = ['cod_ibge','municipio','uf','ano','pos_2019','pos_2023','amostra_projeto_50','amazonia_legal_uf','bioma','fronteira_ativa','fronteira_ativa_nacional','taxa_desmat_2015_2018','taxa_desmat_prim_2015_2018','desmat_pct','desmat_prim_pct',
         'reg_cidadao','reg_cacador_subs','reg_servidor','reg_cidadao_1000','reg_cid_2015_2018','reg_cid_2019_2022','pre_reg_pc','delta_reg_pc','excesso_reg_pc',
         'intens_reg','tratamento_quartil_sup','ano_primeiro_salto','pop','af','ab','outros','transito','covid','taxa_homic_af','taxa_homic_ab',
         'taxa_homic_outros','taxa_obitos_transito','taxa_mortalidade_covid','vab_agro','log_vab_agro_pc','vab_agro_imputado','area_km2','log_densidade_pop']
 df[keep].to_csv(OUT, index=False)
 print(df[keep].shape, df.cod_ibge.nunique())
+print(pd.crosstab(df.drop_duplicates('cod_ibge').bioma, df.drop_duplicates('cod_ibge').fronteira_ativa))
 print(df.drop_duplicates('cod_ibge')[['delta_reg_pc','pre_reg_pc','intens_reg','taxa_desmat_2015_2018']].describe().round(3).to_string())
 print(df.drop_duplicates('cod_ibge').ano_primeiro_salto.value_counts())
 print(df.groupby('ano')[['reg_cidadao','af','ab','pop']].sum())

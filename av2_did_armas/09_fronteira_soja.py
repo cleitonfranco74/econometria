@@ -1,6 +1,6 @@
 """DiD e SDID com a FRONTEIRA DA SOJA como grupo tratado (pedido do docente).
 Fronteira da soja = município com >= 1.000 ha de soja em 2018 (IBGE/PAM, Tab. 5457), área de soja crescendo >= 50% entre
-2010 e 2018 e desmatamento 2015-18 acima da mediana nacional (MapBiomas). Controles: (a) municípios sem soja relevante
+2010 e 2018, perda de vegetação primária 2015-18 acima da mediana do próprio bioma (MapBiomas) e localização na Amazônia ou no Cerrado. Controles: (a) municípios sem soja relevante
 (< 1.000 ha em 2018); (b) soja consolidada (>= 1.000 ha, mas sem expansão ou sem desmatamento).
 Uso: python 09_fronteira_soja.py AV2_painel_municipal_Brasil.csv dados_intermediarios/soja_pam.json resultados_soja.json"""
 import sys, json, warnings, importlib.util, numpy as np, pandas as pd, pyfixest as pf
@@ -14,7 +14,7 @@ df = df.merge(s, left_on='cod_ibge', right_index=True, how='left').fillna({c: 0 
 u = df.drop_duplicates('cod_ibge').set_index('cod_ibge')
 prod = u.soja_ha_2018 >= 1000
 expande = (u.soja_ha_2018 >= 1.5 * u.soja_ha_2010)
-front_soja = prod & expande & (u.fronteira_ativa == 1)
+front_soja = prod & expande & (u.fronteira_ativa == 1) & u.bioma.isin(['Amazônia', 'Cerrado'])   # fronteira: perda primária > mediana do bioma; só Amazônia e Cerrado
 grp = pd.Series('Sem soja', index=u.index); grp[prod] = 'Soja consolidada'; grp[front_soja] = 'Fronteira da soja'
 df['grupo_soja'] = df.cod_ibge.map(grp); df['fronteira_soja'] = (df.grupo_soja == 'Fronteira da soja').astype(int)
 print(grp.value_counts()); print(df[df.fronteira_soja == 1].drop_duplicates('cod_ibge').uf.value_counts().head(12).to_dict())

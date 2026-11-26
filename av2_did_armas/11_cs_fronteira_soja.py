@@ -12,7 +12,7 @@ s = pd.DataFrame(raw[1:]); s['cod_ibge'] = s.D1C.astype(int); s['ano'] = s.D3N.a
 s['ha'] = pd.to_numeric(s.V.replace({'-': '0'}), errors='coerce').fillna(0)
 s = s.pivot(index='cod_ibge', columns='ano', values='ha')
 u = df.drop_duplicates('cod_ibge').set_index('cod_ibge'); s = s.reindex(u.index).fillna(0)
-prod = s[2018] >= 1000; front = prod & (s[2018] >= 1.5 * s[2010]) & (u.fronteira_ativa == 1)
+prod = s[2018] >= 1000; front = prod & (s[2018] >= 1.5 * s[2010]) & (u.fronteira_ativa == 1) & u.bioma.isin(['Amazônia', 'Cerrado'])
 grp = pd.Series('Sem soja', index=u.index); grp[prod] = 'Soja consolidada'; grp[front] = 'Fronteira da soja'
 df['grupo'] = df.cod_ibge.map(grp)
 out = {}

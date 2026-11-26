@@ -31,7 +31,7 @@
 \thispagestyle{empty}
 
 \begin{abstract}
-\noindent Between 2019 and 2022, a sequence of federal decrees relaxed access to firearms in Brazil, and new civilian gun registrations more than doubled. This paper estimates the effect of this expansion on firearm homicides by linking municipal records from the National Firearms System (SINARM) to death records from the Mortality Information System for all 5,570 Brazilian municipalities between 2015 and 2024. Identification exploits municipal variation in the intensity of the shock through difference-in-differences designs with a continuous treatment, staggered adoption \citep{callaway2021}, and synthetic difference-in-differences \citep{arkhangelsky2021}. Each additional registration per 1,000 inhabitants in 2019--2022 raises the firearm homicide rate by 0.225 per 100,000, and municipalities that experienced a registration surge record, on average, 1.62 additional deaths per 100,000. The effect is confined to firearm deaths, does not appear in knife homicides, and is larger on the soy frontier, where it reaches 2.37 deaths per 100,000. Synthetic difference-in-differences estimates are sensitive to the choice of comparison group, and there is no evidence of reversal after the 2023 restrictions.
+\noindent Between 2019 and 2022, a sequence of federal decrees relaxed access to firearms in Brazil, and new civilian gun registrations more than doubled. This paper estimates the effect of this expansion on firearm homicides by linking municipal records from the National Firearms System (SINARM) to death records from the Mortality Information System for all 5,570 Brazilian municipalities between 2015 and 2024. Identification exploits municipal variation in the intensity of the shock through difference-in-differences designs with a continuous treatment, staggered adoption \citep{callaway2021}, and synthetic difference-in-differences \citep{arkhangelsky2021}. Each additional registration per 1,000 inhabitants in 2019--2022 raises the firearm homicide rate by 0.225 per 100,000, and municipalities that experienced a registration surge record, on average, 1.62 additional deaths per 100,000. The effect is confined to firearm deaths, does not appear in knife homicides, and is larger on the soy frontier, where it reaches 3.35 deaths per 100,000. Synthetic difference-in-differences estimates are sensitive to the choice of comparison group, and there is no evidence of reversal after the 2023 restrictions.
 
 \vspace{0.6em}
 \noindent\textbf{Keywords}: firearms; homicides; difference-in-differences; synthetic control; agricultural frontier; Brazil.
@@ -50,7 +50,7 @@ The effect of such an expansion on lethal violence is theoretically ambiguous. I
 
 This paper estimates the effect of the expansion of gun registrations on firearm homicides in all 5,570 Brazilian municipalities between 2015 and 2024. The exposure measure is built from SINARM open microdata, which record each firearm by municipality, month, and owner category, and outcomes come from the Mortality Information System (SIM). The empirical strategy combines difference-in-differences with a continuous treatment, the staggered-adoption estimator of \citet{callaway2021}, and the synthetic difference-in-differences (SDID) estimator of \citet{arkhangelsky2021}. A triple difference that compares firearm and knife homicides within the same municipality and year isolates the gun-availability channel. The paper also examines the soy frontier, where the recent expansion of planted area coincides with deforestation and a strong demand for armed self-defense, motivated by evidence that soy expansion raised homicides in Brazil \citep{moreno2024}.
 
-The results indicate that deregulation increased firearm homicides. In the main specification, each additional registration per 1,000 inhabitants raises the rate by 0.225 deaths per 100,000 per year (standard error 0.092), equivalent to 0.92 deaths per 100,000 when moving from the first to the third quartile of exposure. The \citet{callaway2021} estimator yields an average effect of 1.62 deaths per 100,000 in municipalities that experienced a registration surge. The effect is specific to firearm deaths and is larger on the soy frontier (2.37 per 100,000). Pre-treatment coefficients from the conventional event study are not jointly zero, and SDID estimates depend on the definition of the comparison group; these limitations are discussed in detail.
+The results indicate that deregulation increased firearm homicides. In the main specification, each additional registration per 1,000 inhabitants raises the rate by 0.225 deaths per 100,000 per year (standard error 0.092), equivalent to 0.92 deaths per 100,000 when moving from the first to the third quartile of exposure. The \citet{callaway2021} estimator yields an average effect of 1.62 deaths per 100,000 in municipalities that experienced a registration surge. The effect is specific to firearm deaths and is larger on the soy frontier (3.35 per 100,000). Pre-treatment coefficients from the conventional event study are not jointly zero, and SDID estimates depend on the definition of the comparison group; these limitations are discussed in detail.
 
 The paper makes three contributions. First, it provides the first municipal-level causal estimates of the effects of the 2019--2022 deregulation. Second, it builds a reproducible panel that integrates four public data sources (SINARM, SIM, IBGE, and MapBiomas). Third, it applies SDID to the evaluation of gun policy, as recommended by \citet{benmichael2024}, and documents territorial heterogeneity associated with soy expansion. Section~\ref{sec:literatura} reviews the literature; Section~\ref{sec:contexto} describes the policy; Section~\ref{sec:dados} presents the data; Section~\ref{sec:estrategia} discusses the empirical strategy; Sections~\ref{sec:resultados} to \ref{sec:soja} present the results; Section~\ref{sec:conclusao} concludes.
 
@@ -101,7 +101,7 @@ Treatment intensity is defined as
 \begin{equation}
 \Delta REG_i = \frac{\text{new civilian registrations in 2019--2022}_i}{\text{population in 2018}_i}\times 1{,}000.
 \end{equation}
-Deaths come from SIM microdata aggregated by municipality of residence: firearm homicides (ICD-10 X93--X95), knife homicides (X99), homicides by other means (X85--X92, X96--X98, Y00--Y09), land transport deaths (V01--V89), and COVID-19 deaths (B34.2). Rates are expressed per 100,000 inhabitants, using IBGE population estimates and the 2022 Census. Controls include the log of real agricultural value added per capita, deflated by the IPCA, the log of population density, and COVID-19 mortality. The active agricultural frontier comprises municipalities whose 2015--2018 deforestation, as a share of municipal area, exceeds the national median according to MapBiomas Collection 11.
+Deaths come from SIM microdata aggregated by municipality of residence: firearm homicides (ICD-10 X93--X95), knife homicides (X99), homicides by other means (X85--X92, X96--X98, Y00--Y09), land transport deaths (V01--V89), and COVID-19 deaths (B34.2). Rates are expressed per 100,000 inhabitants, using IBGE population estimates and the 2022 Census. Controls include the log of real agricultural value added per capita, deflated by the IPCA, the log of population density, and COVID-19 mortality. The active agricultural frontier comprises municipalities whose 2015--2018 loss of primary vegetation, as a share of municipal area, exceeds the median of their own biome according to MapBiomas Collection 11. Comparing within biomes prevents municipalities in the Atlantic Forest or the Caatinga with small absolute losses from being classified as frontier relative to the national average, and restricting attention to primary vegetation excludes the clearing of secondary vegetation in already opened areas, typical of land-use rotation.
 
 Table~\ref{tab:desc} reports descriptive statistics. The agricultural frontier absorbed the shock more intensely (Figure~\ref{fig:grupos}), but firearm homicides fell in both groups after 2018, following the national trend. The empirical question is therefore whether this decline was smaller where more guns entered circulation. Figure~\ref{fig:quartis} suggests that it was: until 2018, municipalities in the top quartile of registration growth had rates close to those in the bottom quartile; between 2019 and 2023, they displayed higher rates, a gap that nearly disappears in 2024.
 
@@ -114,16 +114,16 @@ Table~\ref{tab:desc} reports descriptive statistics. The agricultural frontier a
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}
  & 2015--18 & 2019--24 & 2015--18 & 2019--24 \\
 \midrule
-Intensity $\Delta REG_i$ (registrations per 1,000) & 3.87 (5.36) & 3.87 (5.36) & 3.84 (5.38) & 3.84 (5.37) \\
-New registrations per 1,000 per year & 0.60 (1.08) & 0.70 (1.34) & 0.44 (0.96) & 0.70 (1.36) \\
-Firearm homicides (per 100,000) & 11.37 (18.10) & 9.89 (16.57) & 16.20 (20.22) & 14.54 (18.53) \\
-Knife homicides (per 100,000) & 4.35 (8.24) & 3.74 (7.70) & 5.07 (8.51) & 4.55 (8.24) \\
-Traffic deaths (per 100,000) & 23.32 (22.79) & 23.08 (22.91) & 24.11 (21.47) & 23.68 (21.65) \\
-Firearm homicides, aggregate rate & 18.42 & 12.44 & 24.29 & 17.93 \\
+Intensity $\Delta REG_i$ (registrations per 1,000) & 3.27 (4.62) & 3.27 (4.62) & 4.44 (5.97) & 4.44 (5.97) \\
+New registrations per 1,000 per year & 0.47 (0.93) & 0.59 (1.17) & 0.57 (1.11) & 0.81 (1.51) \\
+Firearm homicides (per 100,000) & 12.98 (19.21) & 11.35 (17.38) & 14.58 (19.44) & 13.08 (18.03) \\
+Knife homicides (per 100,000) & 4.45 (8.14) & 3.95 (7.80) & 4.97 (8.61) & 4.34 (8.16) \\
+Traffic deaths (per 100,000) & 23.18 (21.99) & 23.16 (22.60) & 24.25 (22.28) & 23.60 (21.98) \\
+Firearm homicides, aggregate rate & 20.90 & 14.57 & 20.99 & 15.00 \\
 Municipalities & 2,785 & 2,785 & 2,785 & 2,785 \\
 \bottomrule
 \end{tabular}
-\nota{Simple means across municipalities, with standard deviations in parentheses; the second-to-last row reports the group's aggregate rate (total deaths over total population). Agricultural frontier: 2015--2018 deforestation above the national median. Sources: SINARM/Federal Police, SIM/DATASUS, IBGE, and MapBiomas.}
+\nota{Simple means across municipalities, with standard deviations in parentheses; the second-to-last row reports the group's aggregate rate (total deaths over total population). Agricultural frontier: 2015--2018 primary vegetation loss above the biome median. Sources: SINARM/Federal Police, SIM/DATASUS, IBGE, and MapBiomas.}
 \end{table}
 
 \begin{figure}[H]
@@ -162,7 +162,7 @@ where $m$ indexes the means of the homicide, compares firearm and knife homicide
 
 \section{Results}\label{sec:resultados}
 
-Table~\ref{tab:main} presents the main results. In column (2), which includes controls, $\hat\beta = 0.225$, with a standard error of 0.092 (p = 0.014). Moving from the first to the third quartile of exposure (from 0.67 to 4.75 registrations per 1,000 inhabitants) raises the firearm homicide rate by 0.92 deaths per 100,000, equivalent to 5.3\% of the population-weighted mean of 17.24. The Poisson model indicates a 1.44\% increase in firearm homicides for each additional registration per 1,000 inhabitants. The interaction with the agricultural frontier is small and insignificant ($-$0.096; p = 0.470), and the 2023 term shows no reversal through 2024 (0.073; p = 0.142). An alternative design that treats the agricultural frontier as the treated group confirms that it received more guns (0.155 additional registrations per 1,000 inhabitants per year) but detects no difference in homicides ($-$0.62; p = 0.543), because the binary classification pools municipalities with very different exposures.
+Table~\ref{tab:main} presents the main results. In column (2), which includes controls, $\hat\beta = 0.225$, with a standard error of 0.092 (p = 0.014). Moving from the first to the third quartile of exposure (from 0.67 to 4.75 registrations per 1,000 inhabitants) raises the firearm homicide rate by 0.92 deaths per 100,000, equivalent to 5.3\% of the population-weighted mean of 17.24. The Poisson model indicates a 1.44\% increase in firearm homicides for each additional registration per 1,000 inhabitants. The interaction with the agricultural frontier is small and insignificant (0.050; p = 0.717), and the 2023 term shows no reversal through 2024 (0.073; p = 0.142). An alternative design that treats the agricultural frontier as the treated group confirms that it received more guns (0.058 additional registrations per 1,000 inhabitants per year) but detects no difference in homicides (0.27; p = 0.798), because the binary classification pools municipalities with very different exposures.
 
 \begin{table}[H]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
@@ -172,10 +172,10 @@ Table~\ref{tab:main} presents the main results. In column (2), which includes co
  & (1) & (2) & (3) & (4) & (5) & (6) \\
  & TWFE & TWFE & Frontier & Reversal & Poisson & C\&S \\
 \midrule
-$\Delta REG_i \times Post_t$ & 0.158$^{*}$ & 0.225$^{**}$ & 0.279$^{**}$ & 0.202$^{**}$ & 0.014$^{***}$ & 1.62$^{***}$ \\
- & (0.092) & (0.092) & (0.126) & (0.088) & (0.005) & (0.59) \\
-$\Delta REG_i \times Post_t \times Frontier_i$ &  &  & $-$0.096 &  &  &  \\
- &  &  & (0.133) &  &  &  \\
+$\Delta REG_i \times Post_t$ & 0.158$^{*}$ & 0.225$^{**}$ & 0.195 & 0.202$^{**}$ & 0.014$^{***}$ & 1.62$^{***}$ \\
+ & (0.092) & (0.092) & (0.131) & (0.088) & (0.005) & (0.59) \\
+$\Delta REG_i \times Post_t \times Frontier_i$ &  &  & 0.050 &  &  &  \\
+ &  &  & (0.139) &  &  &  \\
 $\Delta REG_i \times Post2023_t$ &  &  &  & 0.073 &  &  \\
  &  &  &  & (0.050) &  &  \\
 \midrule
@@ -234,7 +234,7 @@ Joint pre-test (2015--17) &  & F = 2.82 & p = 0.038 & F = 2.81 & p = 0.038 &  \\
 
 \section{Robustness}\label{sec:robustez}
 
-Table~\ref{tab:rob} collects the robustness tests. The triple-difference coefficient is positive and significant (0.190; p = 0.032), and knife homicides do not respond to registration growth ($-$0.013; p = 0.413). The increase in lethality is therefore specific to firearms, which is consistent with the availability channel and rules out explanations based on general trends in local violence. The binary treatment, defined by the top quartile of exposure, yields an effect of 3.88 deaths per 100,000. More demanding controls, which include trends specific to pre-2019 registration levels or state-by-year fixed effects, raise the coefficient to about 0.54, which indicates that the result is not driven by regional differences in trends. The effect also holds in municipalities with 20,000 or more inhabitants and within each territorial group.
+Table~\ref{tab:rob} collects the robustness tests. The triple-difference coefficient is positive and significant (0.190; p = 0.032), and knife homicides do not respond to registration growth ($-$0.013; p = 0.413). The increase in lethality is therefore specific to firearms, which is consistent with the availability channel and rules out explanations based on general trends in local violence. The binary treatment, defined by the top quartile of exposure, yields an effect of 3.88 deaths per 100,000. More demanding controls, which include trends specific to pre-2019 registration levels or state-by-year fixed effects, raise the coefficient to about 0.54, which indicates that the result is not driven by regional differences in trends. The effect also holds in municipalities with 20,000 or more inhabitants and has a similar magnitude on the agricultural frontier and in consolidated municipalities.
 
 Two results call for caution. The outcome placebo with traffic deaths is positive and significant in the fixed effects model (0.091; p = 0.005), with the effect concentrated in 2021--2024, which suggests a concurrent shock, such as economic and traffic growth in agribusiness municipalities that also registered more guns. In the \citet{callaway2021} estimator, this placebo is not significant (0.55; standard error 0.31). The 2017 timing placebo is negative and marginally significant ($-$0.154; p = 0.071), reflecting the same 2018 drop in homicides seen in the event study. Finally, in the 50-municipality sample the effect is not detectable ($-$0.024; p = 0.915), which illustrates the importance of using the universe of municipalities to estimate effects of this magnitude.
 
@@ -256,8 +256,8 @@ State $\times$ year FE & 0.545$^{***}$ & (0.095) & $<$0.001 & 55,690 \\
 Intensity in excess of 2015--18 & 0.520$^{***}$ & (0.134) & $<$0.001 & 55,700 \\
 Unweighted & 0.093$^{***}$ & (0.024) & $<$0.001 & 55,700 \\
 Municipalities with 20,000+ inhabitants & 0.241$^{***}$ & (0.082) & 0.003 & 16,520 \\
-Subsample: agricultural frontier & 0.261$^{*}$ & (0.144) & 0.070 & 27,850 \\
-Subsample: consolidated & 0.209$^{*}$ & (0.122) & 0.087 & 27,850 \\
+Subsample: agricultural frontier & 0.230$^{**}$ & (0.117) & 0.049 & 27,830 \\
+Subsample: consolidated & 0.222 & (0.140) & 0.114 & 27,870 \\
 Original 50-municipality sample & $-$0.024 & (0.221) & 0.915 & 500 \\
 \bottomrule
 \end{tabular}
@@ -296,9 +296,9 @@ Placebo: traffic deaths ($\geq$ 20,000) & $-$0.23 & (0.50) & $-$0.13 & (0.51) & 
 
 \section{The soy frontier}\label{sec:soja}
 
-The soy frontier comprises municipalities with at least 1,000 hectares of soy in 2018, a planted area at least 50\% larger than in 2010, and 2015--2018 deforestation above the national median. These criteria identify 472 municipalities, concentrated in Rio Grande do Sul, Mato Grosso, Tocantins, Goiás, Minas Gerais, Santa Catarina, and Maranhão. The comparison groups are the 1,105 consolidated soy producers and the 3,993 municipalities without relevant soy production. Table~\ref{tab:soja} shows that the soy frontier received more guns after 2019 in both comparisons. Against municipalities without soy, the difference-in-differences estimate indicates 4.69 additional homicides per 100,000, but the event study reveals an upward trend before 2019 (joint pre-test p-value of 0.027), consistent with the spread of violence to the interior of the country.
+The soy frontier comprises municipalities in the Amazon and Cerrado biomes with at least 1,000 hectares of soy in 2018, a planted area at least 50\% larger than in 2010, and 2015--2018 primary vegetation loss above the biome median. Restricting the analysis to these two biomes focuses on the Arc of Deforestation and the Matopiba region and excludes the conversion of native grasslands and pastures into cropland in southern Brazil, a process of a different nature. These criteria identify 269 municipalities, concentrated in Tocantins, Mato Grosso, Goiás, Maranhão, Piauí, and Minas Gerais. The comparison groups are the 1,308 consolidated soy producers and the 3,993 municipalities without relevant soy production. Table~\ref{tab:soja} shows that the soy frontier received more guns after 2019 in both comparisons. Against municipalities without soy, the difference-in-differences estimate indicates 5.20 additional homicides per 100,000, but the pre-2019 event-study coefficients are negative relative to 2018, which indicates that homicides on the frontier were already rising before deregulation, consistent with the spread of violence to the interior of the country, although the joint test does not reject that they are zero (p = 0.103).
 
-Estimators that account for this trend confirm the effect. SDID against consolidated soy producers, a comparison that isolates recent expansion among municipalities with the same productive base, yields 1.63 deaths per 100,000 (standard error 0.52). In the staggered version of the \citet{callaway2021} estimator, in which each frontier municipality enters treatment in the year of its first registration surge (84 municipalities in 2019, 153 in 2020, and 78 in 2021), the effect is 2.37 deaths per 100,000 (standard error 0.80; p = 0.003), with no significant pre-treatment coefficients and similar results under population weights. The triple interaction with the continuous intensity indicates that each additional registration has a larger effect on the soy frontier (0.35; p = 0.002), and knife-homicide placebos are null. On the soy frontier, the effect is therefore about 45\% larger than the national average estimated with the same method. This design, however, does not fully separate gun deregulation from other agribusiness shocks in the period, such as the 2020--2022 commodity price boom; the evidence that the channel operates through guns comes from the larger growth in registrations on the frontier and from the stronger effect per additional registration.
+Estimators that account for this trajectory confirm the effect. SDID against consolidated soy producers, a comparison that isolates recent expansion among municipalities with the same productive base, yields 2.05 deaths per 100,000 (standard error 0.78). In the staggered version of the \citet{callaway2021} estimator, in which each frontier municipality enters treatment in the year of its first registration surge (59 municipalities in 2019, 92 in 2020, and 49 in 2021), the effect is 3.35 deaths per 100,000 (standard error 1.08; p = 0.002), with no significant pre-treatment coefficients and similar results under population weights. The triple interaction with the continuous intensity suggests that each additional registration has a larger effect on the soy frontier (0.29; p = 0.075), and knife-homicide placebos are not significant at the 5\% level. On the soy frontier, the effect estimated with the \citet{callaway2021} method is therefore about 2.1 times the national average. When treated municipalities are weighted by population, SDID estimates lose significance, which indicates that the effect is concentrated in small and medium-sized frontier municipalities. This design, however, does not fully separate gun deregulation from other agribusiness shocks in the period, such as the 2020--2022 commodity price boom; the evidence that the channel operates through guns comes from the larger growth in registrations on the frontier and from the stronger effect per additional registration.
 
 \begin{table}[H]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
@@ -309,24 +309,53 @@ Estimators that account for this trend confirm the effect. SDID against consolid
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}
  & Coef. & SE & Coef. & SE \\
 \midrule
-Registrations per 1,000 (first stage) & 0.123$^{**}$ & (0.049) & 0.182$^{***}$ & (0.058) \\
-TWFE DiD (pop.-weighted) & 4.693$^{***}$ & (1.168) & 1.147 & (1.193) \\
-TWFE DiD (unweighted) & 2.441$^{***}$ & (0.503) & 1.395$^{***}$ & (0.533) \\
-Event study: joint pre-test p & 0.027 &  & 0.016 &  \\
-SDID & 2.33$^{***}$ & (0.47) & 1.63$^{***}$ & (0.52) \\
-SDID, pop.-weighted treated & $-$0.34 & (0.97) & $-$1.14 & (0.99) \\
-C\&S, 2019 block & 2.59$^{***}$ & (0.65) & 1.23$^{*}$ & (0.71) \\
-C\&S, 2019 block, weighted & 2.92$^{**}$ & (1.24) & $-$0.61 & (1.15) \\
-C\&S, staggered by registration surge & -- &  & 2.37$^{***}$ & (0.80) \\
-C\&S, staggered, weighted & -- &  & 2.29$^{***}$ & (0.85) \\
+Registrations per 1,000 (1st stage) & 0.185$^{***}$ & (0.071) & 0.230$^{***}$ & (0.076) \\
+TWFE DiD (pop.-weighted) & 5.205$^{***}$ & (1.522) & 1.679 & (1.516) \\
+TWFE DiD (unweighted) & 3.187$^{***}$ & (0.723) & 1.951$^{***}$ & (0.737) \\
+Event study: joint pre-test p & 0.103 &  & 0.196 &  \\
+SDID & 2.99$^{***}$ & (0.77) & 2.05$^{***}$ & (0.78) \\
+SDID, pop.-weighted treated & 0.01 & (1.50) & $-$0.96 & (1.46) \\
+C\&S, 2019 block & 3.40$^{***}$ & (0.84) & 2.02$^{**}$ & (0.87) \\
+C\&S, 2019 block, weighted & 2.90$^{*}$ & (1.62) & $-$0.55 & (1.54) \\
+C\&S, staggered by registration surge & -- &  & 3.35$^{***}$ & (1.08) \\
+C\&S, staggered, weighted & -- &  & 3.36$^{***}$ & (1.08) \\
 \midrule
-Knife-homicide placebo: TWFE DiD & $-$0.373 & (0.370) & $-$0.461 & (0.383) \\
-Knife-homicide placebo: C\&S block & 0.32 & (0.42) & 0.67 & (0.48) \\
+Knife-homicide placebo: TWFE DiD & $-$0.862 & (0.571) & $-$0.968$^{*}$ & (0.586) \\
+Knife-homicide placebo: C\&S block & 0.64 & (0.60) & 0.95 & (0.63) \\
 \midrule
-Treated / control municipalities & 472 / 3,993 &  & 472 / 1,105 &  \\
+Treated / control municipalities & 269 / 3,993 &  & 269 / 1,308 &  \\
 \bottomrule
 \end{tabular}
-\nota{Soy frontier: at least 1,000 ha of soy in 2018, soy area 50\% larger than in 2010, and 2015--2018 deforestation above the median. DiD with municipality and year fixed effects, controls, and standard errors clustered by municipality; SDID with municipality bootstrap standard errors. In the staggered version of the \citet{callaway2021} estimator, cohorts are defined by the first registration surge, controls are consolidated producers and not-yet-treated municipalities, and frontier municipalities without a surge are excluded. $^{*}$ p$<$0.10; $^{**}$ p$<$0.05; $^{***}$ p$<$0.01. Sources: IBGE/PAM, MapBiomas, SINARM/Federal Police, and SIM/DATASUS.}
+\nota{Soy frontier: Amazon and Cerrado municipalities with at least 1,000 ha of soy in 2018, soy area 50\% larger than in 2010, and 2015--2018 primary vegetation loss above the biome median. DiD with municipality and year fixed effects, controls, and standard errors clustered by municipality; SDID with municipality bootstrap standard errors. In the staggered version of the \citet{callaway2021} estimator, cohorts are defined by the first registration surge, controls are consolidated producers and not-yet-treated municipalities, and frontier municipalities without a surge are excluded. $^{*}$ p$<$0.10; $^{**}$ p$<$0.05; $^{***}$ p$<$0.01. Sources: IBGE/PAM, MapBiomas, SINARM/Federal Police, and SIM/DATASUS.}
+\end{table}
+
+\subsection*{Deforestation and guns}
+
+Table~\ref{tab:desm} examines the association between deforestation and gun registrations directly, using annual MapBiomas deforestation and annual SINARM registrations. Within the same municipality, years of higher deforestation are accompanied by more gun registrations, even with state-by-year fixed effects (0.032; p = 0.039): one within-municipality standard deviation of annual deforestation corresponds to about 1.6\% of mean registrations. The association persists with the previous year's deforestation (0.032; p = 0.006) and when only primary vegetation loss is considered (0.060; p = 0.030). Across municipalities, 2015--2018 deforestation does not predict registration growth in 2019--2022 in the country as a whole (0.025; p = 0.464), but it does in the Cerrado (0.139; p = 0.007), and not in the Amazon ($-$0.011; p = 0.911). In the tercile with the most deforestation, new registrations rose from 0.34 to 0.50 per 1,000 inhabitants per year after 2019 (+48\%), while in the tercile with the least deforestation they remained stable (0.39 and 0.39); firearm homicides fell from 24.5 to 18.5 per 100,000 in the first group and from 18.9 to 13.7 in the second. These associations have no causal interpretation, because deforestation and the demand for guns may stem from the same process of agricultural expansion and land disputes, but they reinforce the evidence that, in the Cerrado and on the soy frontier, deforestation, guns, and homicides move together. The absence of an association in the Amazon is consistent with a larger role of illegal guns, which SINARM does not capture, in deforestation-related violence in that biome.
+
+\begin{table}[H]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Deforestation and civilian gun registrations}\label{tab:desm}
+\begin{tabular}{lcccc}
+\toprule
+ & Coefficient & SE & p-value & N \\
+\midrule
+\textit{Panel A: within municipality (2015--2024)} &  &  &  &  \\
+Deforestation in year, municipality and year FE & 0.077$^{***}$ & (0.018) & $<$0.001 & 55,700 \\
+Deforestation in year, municipality and state $\times$ year FE & 0.032$^{**}$ & (0.016) & 0.039 & 55,690 \\
+Deforestation in previous year & 0.032$^{***}$ & (0.012) & 0.006 & 50,121 \\
+Primary vegetation loss only & 0.060$^{**}$ & (0.028) & 0.030 & 55,690 \\
+\midrule
+\textit{Panel B: across municipalities, by biome} &  &  &  &  \\
+All municipalities & 0.025 & (0.033) & 0.464 & 5,569 \\
+Amazon & $-$0.011 & (0.101) & 0.911 & 508 \\
+Cerrado & 0.139$^{***}$ & (0.052) & 0.007 & 1,121 \\
+Atlantic Forest & 0.127$^{*}$ & (0.075) & 0.088 & 2,645 \\
+Caatinga & 0.030$^{*}$ & (0.017) & 0.081 & 1,106 \\
+Pampa & $-$0.119 & (0.173) & 0.493 & 179 \\
+\bottomrule
+\end{tabular}
+\nota{Panel A: dependent variable is new civilian gun registrations per 1,000 inhabitants in the year; deforestation as a percentage of municipal area in the year; population weights and standard errors clustered by municipality. Panel B: dependent variable is new registrations in 2019--2022 per 1,000 inhabitants; cumulative 2015--2018 deforestation as a percentage of area; controls for the log of agricultural value added per capita, density, and population, and for 2015--2018 registrations, with state fixed effects and robust standard errors. Biome defined by the largest cumulative deforestation in the municipality. $^{*}$ p$<$0.10; $^{**}$ p$<$0.05; $^{***}$ p$<$0.01. Sources: MapBiomas, SINARM/Federal Police, and IBGE.}
 \end{table}
 
 \section{Discussion}\label{sec:discussao}

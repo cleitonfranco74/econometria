@@ -8,7 +8,8 @@ substitui a base simulada da proposta original por dados municipais reais de tod
   Homicídios por arma branca (X99) entram na tripla diferença e óbitos no trânsito (V01–V89) servem de placebo.
 - **Tratamento (contínuo):** `delta_reg_pc` = novos registros de armas por civis (SINARM/PF) em 2019–2022 por mil hab. × Pós-2019.
   Coortes para Callaway & Sant'Anna: 1º ano (2019–2021) com taxa de registros ≥ 2× a média 2015–18.
-- **Heterogeneidade:** fronteira agrícola ativa = desmatamento 2015–18 (MapBiomas Col. 11) acima da mediana.
+- **Heterogeneidade:** fronteira agrícola ativa = perda de vegetação primária 2015–18 (MapBiomas Col. 11) acima da mediana do próprio bioma.
+  Fronteira da soja = municípios da Amazônia e do Cerrado com ≥ 1.000 ha de soja em 2018, área +50% desde 2010 e fronteira ativa.
 - CACs (SIGMA/Exército) não têm dado público por município; o SINARM é a medida municipal disponível.
 
 ## Principais resultados
@@ -55,6 +56,10 @@ python 04_figuras.py
 python 08_sdid.py AV2_painel_municipal_Brasil.csv resultados_sdid.json
 python 09_fronteira_soja.py AV2_painel_municipal_Brasil.csv dados_intermediarios/soja_pam.json resultados_soja.json
 python 10_figuras_sdid_mensal.py   # usa dados_intermediarios/sinarm_mensal_brasil.csv
+python 11_cs_fronteira_soja.py AV2_painel_municipal_Brasil.csv dados_intermediarios/soja_pam.json resultados_cs_soja.json
+python 12_desmatamento_armas.py AV2_painel_municipal_Brasil.csv resultados_desmatamento.json
+python 13_fronteira_tratamento.py AV2_painel_municipal_Brasil.csv fronteira_tratamento.json
+cd paper && python figuras.py && python gera_paper.py en && latexmk -pdf paper_en.tex
 python 06_artigo_completo.py proposta_original/AV2_PROFNIT_Projeto_DiD.docx AV2_PROFNIT_Artigo_Revisado_Dados_Municipais.docx
 ```
 `fronteira_tratamento.json` vem da especificação com a fronteira como grupo tratado, descrita na Seção 6 do artigo.

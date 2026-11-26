@@ -45,6 +45,18 @@ V.update(b2=n(b2['coef'], 3), b2se=n(b2['se'], 3), b2p=pv(b2['p']), iqr=n(b2['co
          soydid=n(SJ['res']['DiD homic. AF vs. sem soja']['coef']), soyesp=n(SJ['res']['Event study vs. sem soja']['p'], 3),
          c19=f"{I['coortes']['2019']:,}".replace(',', ',' if EN else '.'), c20=f"{I['coortes']['2020']:,}".replace(',', ',' if EN else '.'), c21=f"{I['coortes']['2021']}", c0=f"{I['coortes']['0']:,}".replace(',', ',' if EN else '.'))
 cc = CSJ['coortes_escalonado']; V.update(sc19=str(cc['2019.0']), sc20=str(cc['2020.0']), sc21=str(cc['2021.0']))
+DF = J('resultados_desmatamento.json'); pn = DF['painel']; bi = DF['bioma']; tc = DF['tercil']; esc = DF['escala']
+V.update(soyratio=n(cse['att'] / csn[0], 1), soyesp2=n(SJ['res']['Event study vs. soja consolidada']['p'], 3),
+         dp1=n(pn['EF município e UF × ano']['coef'], 3), dp1p=pv(pn['EF município e UF × ano']['p']),
+         dplag=n(pn['Desmatamento defasado (t−1)']['coef'], 3), dplagp=pv(pn['Desmatamento defasado (t−1)']['p']),
+         dpprim=n(pn['Só vegetação primária']['coef'], 3), dpprimp=pv(pn['Só vegetação primária']['p']),
+         dpsd=n(100 * pn['EF município e UF × ano']['coef'] * esc['sd_within'] / esc['media_reg'], 1),
+         dball=n(bi['Todos']['coef'], 3), dballp=pv(bi['Todos']['p']), dbce=n(bi['Cerrado']['coef'], 3), dbcep=pv(bi['Cerrado']['p']),
+         dbam=n(bi['Amazônia']['coef'], 3), dbamp=pv(bi['Amazônia']['p']),
+         t3r0=n(tc['Alto|0']['reg']), t3r1=n(tc['Alto|1']['reg']), t1r0=n(tc['Baixo|0']['reg']), t1r1=n(tc['Baixo|1']['reg']),
+         t3pct=n(100 * (tc['Alto|1']['reg'] / tc['Alto|0']['reg'] - 1), 0), t3a0=n(tc['Alto|0']['af'], 1), t3a1=n(tc['Alto|1']['af'], 1),
+         t1a0=n(tc['Baixo|0']['af'], 1), t1a1=n(tc['Baixo|1']['af'], 1))
+
 
 # ------------------------------------------------------------------ tabelas
 def row(*c): return ' & '.join(c) + r' \\'
@@ -115,7 +127,7 @@ sr = SJ['res']; ss = SJ['sdid']
 def l(k): x = sr[k]; return [n(x['coef'], 3) + st(x['p']), '(' + n(x['se'], 3) + ')']
 def lsd(k): x = ss[k]['sdid']; return [n(x['tau']) + st(x['p']), '(' + n(x['se']) + ')']
 def lcs(k): x = CSJ[k]; return [n(x['att']) + st(x['p']), '(' + n(x['se']) + ')']
-t6 = [row(T('Registros de armas por mil hab. (1º estágio)', 'Registrations per 1,000 (first stage)'), *l('1º estágio: registros/mil hab. vs. sem soja'), *l('1º estágio: registros/mil hab. vs. soja consolidada')),
+t6 = [row(T('Registros por mil hab. (1º estágio)', 'Registrations per 1,000 (1st stage)'), *l('1º estágio: registros/mil hab. vs. sem soja'), *l('1º estágio: registros/mil hab. vs. soja consolidada')),
       row(T('DiD TWFE (ponderado pela pop.)', 'TWFE DiD (pop.-weighted)'), *l('DiD homic. AF vs. sem soja'), *l('DiD homic. AF vs. soja consolidada')),
       row(T('DiD TWFE (sem ponderação)', 'TWFE DiD (unweighted)'), *l('DiD homic. AF vs. sem soja (sem ponderação)'), *l('DiD homic. AF vs. soja consolidada (sem ponderação)')),
       row(T('Event study: p do teste conjunto pré', 'Event study: joint pre-test p'), n(sr['Event study vs. sem soja']['p'], 3), '', n(sr['Event study vs. soja consolidada']['p'], 3), ''),
@@ -131,6 +143,17 @@ t6 = [row(T('Registros de armas por mil hab. (1º estágio)', 'Registrations per
       r'\midrule', row(T('Municípios tratados / controle', 'Treated / control municipalities'), f"{SJ['n']['Fronteira da soja']} / {V['nsem']}", '', f"{SJ['n']['Fronteira da soja']} / {V['ncons']}", '')]
 V['tab6'] = '\n'.join(t6)
 
+t7 = [row(T('\\textit{Painel A: dentro do município (2015--2024)}', '\\textit{Panel A: within municipality (2015--2024)}'), '', '', '', '')]
+for k, lab in [('EF município e ano', T('Desmatamento no ano, EF de município e ano', 'Deforestation in year, municipality and year FE')),
+               ('EF município e UF × ano', T('Desmatamento no ano, EF de município e UF $\\times$ ano', 'Deforestation in year, municipality and state $\\times$ year FE')),
+               ('Desmatamento defasado (t−1)', T('Desmatamento no ano anterior', 'Deforestation in previous year')),
+               ('Só vegetação primária', T('Só perda de vegetação primária', 'Primary vegetation loss only'))]:
+    x = pn[k]; t7.append(row(lab, n(x['coef'], 3) + st(x['p']), '(' + n(x['se'], 3) + ')', pv(x['p']), f"{x['n']:,}".replace(',', ',' if EN else '.')))
+t7 += [r'\midrule', row(T('\\textit{Painel B: entre municípios, por bioma}', '\\textit{Panel B: across municipalities, by biome}'), '', '', '', '')]
+for b, lab in [('Todos', T('Todos os municípios', 'All municipalities')), ('Amazônia', T('Amazônia', 'Amazon')), ('Cerrado', 'Cerrado'),
+               ('Mata Atlântica', T('Mata Atlântica', 'Atlantic Forest')), ('Caatinga', 'Caatinga'), ('Pampa', 'Pampa')]:
+    x = bi[b]; t7.append(row(lab, n(x['coef'], 3) + st(x['p']), '(' + n(x['se'], 3) + ')', pv(x['p']), f"{x['n']:,}".replace(',', ',' if EN else '.')))
+V['tab7'] = '\n'.join(t7)
 tex = open(Path(__file__).with_name(f'paper_modelo_{LANG}.tex'), encoding='utf-8').read()
 for k_, v in V.items(): tex = tex.replace('@@' + k_ + '@@', v)
 left = re.findall(r'@@\w+@@', tex)
